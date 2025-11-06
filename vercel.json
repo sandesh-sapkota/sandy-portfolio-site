@@ -1,13 +1,5 @@
 {
   "buildCommand": "npm run build",
   "devCommand": "vite",
-  "installCommand": "npm install",
-  "env": {
-    "VITE_CUSTOM_CONFIG": "production"
-  },
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10
-    }
-  }
+  "installCommand": "npm install"
 }
