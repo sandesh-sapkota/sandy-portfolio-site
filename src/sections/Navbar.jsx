@@ -84,7 +84,7 @@ const Navbar = () => {
             >
               <div className="w-full h-full rounded-full bg-neutral-950 flex items-center justify-center overflow-hidden border border-white/10">
                 <img
-                  src="assets/sandy.jpeg"
+                  src="assets/sandyy.webp"
                   alt="Sandesh Profile"
                   className="w-full h-full object-cover"
                 />
@@ -118,11 +118,12 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <motion.div
-          className="sm:hidden overflow-hidden text-center border-b border-neutral-800/30 backdrop-blur-xl bg-neutral-950/50"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
+          className="sm:hidden overflow-hidden text-center border-b border-neutral-800/30 backdrop-blur-xl bg-neutral-950/50 motion-optimized"
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={{ opacity: 1, scaleY: 1 }}
+          exit={{ opacity: 0, scaleY: 0 }}
           transition={{ duration: 0.3 }}
+          style={{ originY: 0 }}
         >
           <nav className="py-6 space-y-3">
             <Navigation onItemClick={() => setIsOpen(false)} />

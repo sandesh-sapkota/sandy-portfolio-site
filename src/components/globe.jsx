@@ -1,12 +1,42 @@
+/* eslint-disable react/prop-types */
 "use client";
 
 import createGlobe from "cobe";
 import { useMotionValue, useSpring } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { twMerge } from "tailwind-merge";
 
 const MOVEMENT_DAMPING = 1400;
+
+// Reduced quality config for mobile devices
+const GLOBE_CONFIG_MOBILE = {
+  width: 400,
+  height: 400,
+  onRender: () => {},
+  devicePixelRatio: 1,
+  phi: 0,
+  theta: 0.3,
+  dark: 1,
+  diffuse: 0.4,
+  mapSamples: 8000,
+  mapBrightness: 1.2,
+  baseColor: [1, 1, 1],
+  markerColor: [1, 1, 1],
+  glowColor: [1, 1, 1],
+  markers: [
+    { location: [14.5995, 120.9842], size: 0.03 },
+    { location: [19.076, 72.8777], size: 0.1 },
+    { location: [23.8103, 90.4125], size: 0.05 },
+    { location: [30.0444, 31.2357], size: 0.07 },
+    { location: [39.9042, 116.4074], size: 0.08 },
+    { location: [-23.5505, -46.6333], size: 0.1 },
+    { location: [19.4326, -99.1332], size: 0.1 },
+    { location: [40.7128, -74.006], size: 0.1 },
+    { location: [34.6937, 135.5022], size: 0.05 },
+    { location: [41.0082, 28.9784], size: 0.06 },
+  ],
+};
 
 const GLOBE_CONFIG = {
   width: 800,
@@ -42,6 +72,8 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
   const canvasRef = useRef(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -49,6 +81,12 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
     damping: 30,
     stiffness: 100,
   });
+
+  // Detect mobile on mount only to avoid layout shift
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    setIsLoaded(true);
+  }, []);
 
   const updatePointerInteraction = (value) => {
     pointerInteracting.current = value;
@@ -66,24 +104,34 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
   };
 
   useEffect(() => {
+    if (!isLoaded || !canvasRef.current) return;
+
+    // Select config based on device size
+    const selectedConfig = isMobile ? GLOBE_CONFIG_MOBILE : config;
+
+    // Debounced resize handler to prevent layout thrashing
+    let resizeTimeoutId;
     const onResize = () => {
-      if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
-      }
+      clearTimeout(resizeTimeoutId);
+      resizeTimeoutId = setTimeout(() => {
+        if (canvasRef.current) {
+          width = canvasRef.current.offsetWidth;
+        }
+      }, 150);
     };
 
     window.addEventListener("resize", onResize);
     onResize();
 
     const globe = createGlobe(canvasRef.current, {
-      ...config,
-      width: width * 2,
-      height: width * 2,
+      ...selectedConfig,
+      width: width * (isMobile ? 1 : 2),
+      height: width * (isMobile ? 1 : 2),
       onRender: (state) => {
         if (!pointerInteracting.current) phi += 0.005;
         state.phi = phi + rs.get();
-        state.width = width * 2;
-        state.height = width * 2;
+        state.width = width * (isMobile ? 1 : 2);
+        state.height = width * (isMobile ? 1 : 2);
       },
     });
 
@@ -91,13 +139,19 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
     return () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);
+      clearTimeout(resizeTimeoutId);
     };
-  }, [rs, config]);
+  }, [rs, config, isMobile, isLoaded]);
+
+  // Don't render until client-side hydration complete
+  if (!isLoaded) {
+    return <div className={twMerge("mx-auto aspect-[1/1] w-full max-w-[600px]", className)} />;
+  }
 
   return (
     <div
       className={twMerge(
-        "mx-auto aspect-[1/1] w-full max-w-[600px]",
+        "mx-auto aspect-[1/1] w-full max-w-[600px] motion-optimized",
         className
       )}
     >

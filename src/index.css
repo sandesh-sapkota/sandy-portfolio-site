@@ -189,3 +189,53 @@ html {
 .field-input-focus {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
 }
+
+/* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+
+/* GPU-accelerated animations - avoid layout thrashing */
+.motion-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Smooth motion on mobile */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-optimized {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Disable animations for users with reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize scrolling performance */
+body {
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .motion-optimized {
+    animation-duration: 0.2s !important;
+  }
+
+  /* Simplify particle animations on mobile */
+  .particles-container {
+    opacity: 0.5;
+  }
+}

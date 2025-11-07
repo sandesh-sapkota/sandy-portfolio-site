@@ -1,5 +1,17 @@
+/* eslint-disable react/prop-types */
 import { twMerge } from "tailwind-merge";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+// Mobile detection hook
+const useMobileDetect = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+  
+  return isMobile;
+};
 
 function MousePosition() {
   const [mousePosition, setMousePosition] = useState({
@@ -51,6 +63,11 @@ export const Particles = ({
   vy = 0,
   ...props
 }) => {
+  // Reduce particles on mobile for better performance
+  const isMobile = useMobileDetect();
+  const mobileQuantity = Math.floor(quantity * 0.3);
+  const effectiveQuantity = isMobile ? mobileQuantity : quantity;
+
   const canvasRef = useRef(null);
   const canvasContainerRef = useRef(null);
   const context = useRef(null);
@@ -58,7 +75,7 @@ export const Particles = ({
   const mousePosition = MousePosition();
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
-  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : (isMobile ? 1 : 1);
   const rafID = useRef(null);
   const resizeTimeout = useRef(null);
 
@@ -129,9 +146,9 @@ export const Particles = ({
       canvasRef.current.style.height = `${canvasSize.current.h}px`;
       context.current.scale(dpr, dpr);
 
-      // Clear existing particles and create new ones with exact quantity
+      // Clear existing particles and create new ones with effective quantity
       circles.current = [];
-      for (let i = 0; i < quantity; i++) {
+      for (let i = 0; i < effectiveQuantity; i++) {
         const circle = circleParams();
         drawCircle(circle);
       }
