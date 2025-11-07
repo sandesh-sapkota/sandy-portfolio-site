@@ -154,7 +154,7 @@ export const mySocials = [
   },
     {
    name: "Facebook",
-   href: "https://wa.me/9779749392634",
+   href: "https://www.facebook.com/sandesh.sapkota.471533/",
    icon: "/assets/socials/fb.svg",
  },
   {
