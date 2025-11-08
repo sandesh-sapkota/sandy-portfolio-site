@@ -70,7 +70,7 @@ const Navbar = () => {
       <ProfileModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        profileImage="assets/sandy.jpeg"
+        profileImage="assets/sandyy.webp"
       />
       <div className="mx-auto c-space max-w-7xl">
         <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4 border-b border-white/5 backdrop-blur-2xl bg-gradient-to-b from-neutral-950/90 to-neutral-950/50 rounded-b-xl shadow-lg">
