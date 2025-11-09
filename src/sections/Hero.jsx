@@ -24,7 +24,7 @@ const Hero = () => {
           <pointLight position={[-5, -5, 5]} intensity={0.5} />
           <Suspense>
             <DeveloperModel
-              modelPath="/models/mac-laptop.glb"
+              modelPath="/models/mac-laptop-compressed.glb"
               autoRotate={true}
               rotationSpeed={0.005}
               scaleValue={isMobile ? 2.6 : isTablet ? 3.7 : 5.1}
