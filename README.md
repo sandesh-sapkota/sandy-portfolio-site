@@ -157,7 +157,7 @@ Works on:
 **Animations look choppy?**
 - This is usually a browser performance issue
 - Try closing other tabs
-- Check GPU acceleration is enabled
+- Check GPU acceleration is enabled.
 
 ## Built With
 
