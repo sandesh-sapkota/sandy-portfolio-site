@@ -9,6 +9,7 @@ const ProjectDetails = ({
   image,
   tags,
   href,
+  githubLink,
   isInternal,
   closeModal,
 }) => {
@@ -105,19 +106,34 @@ const ProjectDetails = ({
                 </motion.div>
               ))}
             </div>
-            {!isInternal && (
-              <motion.a 
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 font-semibold hover:border-cyan-300 transition-all text-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Project 
-                <img src="assets/arrow-up.svg" className="w-4 h-4" />
-              </motion.a>
-            )}
+            <div className="flex items-center gap-3 flex-wrap">
+              {!isInternal && (
+                <motion.a 
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 font-semibold hover:border-cyan-300 transition-all text-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View Project 
+                  <img src="assets/arrow-up.svg" className="w-4 h-4" />
+                </motion.a>
+              )}
+              {githubLink && (
+                <motion.a 
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-gray-500/20 to-gray-600/20 border border-gray-400/50 text-gray-300 font-semibold hover:border-gray-300 transition-all text-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img src="assets/logos/github.svg" className="w-4 h-4" />
+                  GitHub Code
+                </motion.a>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>

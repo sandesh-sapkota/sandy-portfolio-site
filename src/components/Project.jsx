@@ -8,6 +8,7 @@ const Project = ({
   description,
   subDescription,
   href,
+  githubLink,
   image,
   tags,
   setPreview,
@@ -51,6 +52,7 @@ const Project = ({
             image={image}
             tags={tags}
             href={href}
+            githubLink={githubLink}
             isInternal={isInternal}
             closeModal={() => setIsHidden(false)}
           />

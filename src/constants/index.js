@@ -11,6 +11,7 @@ export const myProjects = [
       "Designed responsive UI with Tailwind CSS and managed state efficiently using Zustand.",
     ],
     href: "",
+    githubLink: "",
     logo: "",
     image: "/assets/projects/prs.jpg",
     isInternal: true,
@@ -54,6 +55,7 @@ export const myProjects = [
       "Implemented location-based weather fetching with error handling.",
     ],
     href: "https://sandesh-sapkota.github.io/weatherApp/",
+    githubLink: "https://github.com/sandesh-sapkota/weatherApp",
     logo: "",
     image: "/assets/projects/weather.jpg",
     tags: [
@@ -87,6 +89,7 @@ export const myProjects = [
       "Created intuitive interface for students and educators to interact seamlessly.",
     ],
     href: "https://sandyeduhub.netlify.app/",
+    githubLink: "https://github.com/sandesh-sapkota/sandy-eduhub",
     logo: "",
     image: "/assets/projects/sandy-eduhub.jpg",
     tags: [
@@ -119,6 +122,7 @@ export const myProjects = [
       "Designed optimized responsive layouts with Tailwind CSS for all screen sizes.",
     ],
     href: "https://sandesh-sapkota.github.io/add-to-cart/",
+    githubLink: "https://github.com/sandesh-sapkota/add-to-cart",
     logo: "",
     image: "/assets/projects/crud.jpg",
     tags: [
