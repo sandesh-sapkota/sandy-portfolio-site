@@ -25,18 +25,20 @@ const ProjectDetails = ({
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center w-full h-full px-4 py-8 overflow-hidden backdrop-blur-lg bg-black/40"
+      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center w-full h-full px-4 py-4 sm:py-8 overflow-y-auto backdrop-blur-lg bg-black/40"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
+      onClick={closeModal}
     >
       <motion.div
-        className="relative max-w-3xl max-h-[calc(100vh-80px)] border shadow-2xl rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-black border-white/10 overflow-hidden"
+        className="relative w-full max-w-3xl my-auto border shadow-2xl rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-black border-white/10 overflow-hidden"
         initial={{ opacity: 0, scale: 0.7, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.7, y: 40 }}
         transition={{ type: "spring", stiffness: 350, damping: 30, mass: 1 }}
+        onClick={(e) => e.stopPropagation()}
       >
         <motion.button
           onClick={closeModal}
@@ -106,13 +108,13 @@ const ProjectDetails = ({
                 </motion.div>
               ))}
             </div>
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
               {!isInternal && (
                 <motion.a 
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 font-semibold hover:border-cyan-300 transition-all text-sm"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 font-semibold hover:border-cyan-300 transition-all text-sm w-full sm:w-auto"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -125,7 +127,7 @@ const ProjectDetails = ({
                   href={githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-gray-500/20 to-gray-600/20 border border-gray-400/50 text-gray-300 font-semibold hover:border-gray-300 transition-all text-sm"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-gray-500/20 to-gray-600/20 border border-gray-400/50 text-gray-300 font-semibold hover:border-gray-300 transition-all text-sm w-full sm:w-auto"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
