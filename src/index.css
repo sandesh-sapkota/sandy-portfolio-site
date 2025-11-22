@@ -106,6 +106,7 @@ body {
 
 html {
   scrollbar-color: #22d3ee #0a0e1a;
+  scroll-behavior: smooth;
 }
 
 .c-space {
