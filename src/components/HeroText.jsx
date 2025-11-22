@@ -108,6 +108,10 @@ export default function HeroText() {
         >
           <motion.a
             href="#work"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
             className="px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold text-sm md:text-base shadow-lg hover:shadow-2xl transition-all hover:scale-105 active:scale-95"
             variants={variants.button}
             whileHover={{ y: -2 }}
@@ -118,6 +122,10 @@ export default function HeroText() {
 
           <motion.a
             href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
             className="px-8 py-3 rounded-full border-2 border-white text-white font-bold text-sm md:text-base hover:bg-white hover:text-black transition-all shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95"
             variants={variants.button}
             whileHover={{ y: -2 }}

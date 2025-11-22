@@ -107,6 +107,16 @@ body {
 html {
   scrollbar-color: #22d3ee #0a0e1a;
   scroll-behavior: smooth;
+  /* Mobile touch scrolling optimizations */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+body {
+  /* Prevent scroll lag on mobile */
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c-space {
@@ -230,6 +240,14 @@ body {
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
+  /* Optimize scrolling performance */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
   /* Reduce animation complexity on mobile */
   .motion-optimized {
     animation-duration: 0.2s !important;
@@ -254,5 +272,18 @@ body {
   /* Optimize Canvas rendering */
   canvas {
     image-rendering: auto;
+    pointer-events: none; /* Prevent canvas from blocking touch events */
+  }
+  
+  /* Prevent scroll blocking */
+  body, html {
+    overscroll-behavior-y: contain;
+    scroll-behavior: auto; /* Disable smooth scroll on mobile for better performance */
+  }
+  
+  /* Optimize fixed elements */
+  .fixed {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
