@@ -237,6 +237,22 @@ body {
 
   /* Simplify particle animations on mobile */
   .particles-container {
-    opacity: 0.5;
+    opacity: 0.3;
+    will-change: auto; /* Disable will-change on mobile to save memory */
+  }
+  
+  /* Disable expensive transforms on mobile */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* Reduce backdrop blur on mobile */
+  .backdrop-blur-lg {
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Optimize Canvas rendering */
+  canvas {
+    image-rendering: auto;
   }
 }

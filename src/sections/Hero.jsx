@@ -14,26 +14,35 @@ const Hero = () => {
     <section id="home" className="flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space pt-8 md:pt-12 lg:pt-16">
       <HeroText />
       <ParallaxBackground />
-      <figure
-        className="absolute inset-0"
-        style={{ width: "100%", height: "100vh" }}
-      >
-        <Canvas camera={{ position: [0, 1, 3] }}>
-          <ambientLight intensity={0.9} />
-          <directionalLight position={[6, 7, 9]} intensity={1.5} />
-          <pointLight position={[-5, -5, 5]} intensity={0.5} />
-          <Suspense>
-            <DeveloperModel
-              modelPath="/models/mac-laptop-compressed.glb"
-              autoRotate={true}
-              rotationSpeed={0.005}
-              scaleValue={isMobile ? 2.6 : isTablet ? 3.7 : 5.1}
-              positionValue={isMobile ? [0, -2.7, 0] : isTablet ? [-0.1, -1.3, 0] : [2.8, -0.5, 0]}
-            />
-            <Rig />
-          </Suspense>
-        </Canvas>
-      </figure>
+      {/* Disable 3D on mobile for performance */}
+      {!isMobile && (
+        <figure
+          className="absolute inset-0"
+          style={{ width: "100%", height: "100vh" }}
+        >
+          <Canvas 
+            camera={{ position: [0, 1, 3] }}
+            gl={{
+              powerPreference: "high-performance",
+              antialias: false,
+            }}
+          >
+            <ambientLight intensity={0.9} />
+            <directionalLight position={[6, 7, 9]} intensity={1.5} />
+            <pointLight position={[-5, -5, 5]} intensity={0.5} />
+            <Suspense fallback={null}>
+              <DeveloperModel
+                modelPath="/models/mac-laptop-compressed.glb"
+                autoRotate={true}
+                rotationSpeed={0.005}
+                scaleValue={isTablet ? 3.7 : 5.1}
+                positionValue={isTablet ? [-0.1, -1.3, 0] : [2.8, -0.5, 0]}
+              />
+              <Rig />
+            </Suspense>
+          </Canvas>
+        </figure>
+      )}
     </section>
   );
 };
