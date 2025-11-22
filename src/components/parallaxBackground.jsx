@@ -1,17 +1,14 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useMediaQuery } from "react-responsive";
 
 const ParallaxBackground = () => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
   const { scrollYProgress } = useScroll();
   
-  // Reduce damping on mobile for better performance
-  const x = useSpring(scrollYProgress, { damping: isMobile ? 100 : 50 });
+  // Enable parallax on all devices
+  const x = useSpring(scrollYProgress, { damping: 50 });
   
-  // Disable parallax on mobile for performance
-  const mountain3Y = useTransform(x, [0, 0.5], isMobile ? ["0%", "0%"] : ["0%", "70%"]);
-  const planetsX = useTransform(x, [0, 0.5], isMobile ? ["0%", "0%"] : ["0%", "-20%"]);
-  const mountain2Y = useTransform(x, [0, 0.5], isMobile ? ["0%", "0%"] : ["0%", "30%"]);
+  const mountain3Y = useTransform(x, [0, 0.5], ["0%", "70%"]);
+  const planetsX = useTransform(x, [0, 0.5], ["0%", "-20%"]);
+  const mountain2Y = useTransform(x, [0, 0.5], ["0%", "30%"]);
   const mountain1Y = useTransform(x, [0, 0.5], ["0%", "0%"]);
 
   return (

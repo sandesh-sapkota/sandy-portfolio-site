@@ -272,7 +272,7 @@ body {
   /* Optimize Canvas rendering */
   canvas {
     image-rendering: auto;
-    pointer-events: none; /* Prevent canvas from blocking touch events */
+    touch-action: pan-y;
   }
   
   /* Prevent scroll blocking */
