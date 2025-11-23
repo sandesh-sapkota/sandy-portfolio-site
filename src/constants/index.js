@@ -1,6 +1,39 @@
 export const myProjects = [
   {
     id: 1,
+    title: "Spylt - Immersive Landing Page",
+    description:
+      "A modern, high-performance landing page focusing on immersive user experience through advanced animations.",
+    subDescription: [
+      "Built with React 19 and Tailwind CSS v4 for a robust and modern foundation.",
+      "Utilized GSAP for complex scroll-driven animations and parallax effects.",
+      "Features interactive UI with custom cursors and seamless video integration.",
+      "Fully responsive design optimized for all devices.",
+    ],
+    href: "https://spylt-site.vercel.app/",
+    githubLink: "https://github.com/sandesh-sapkota/spylt-site",
+    logo: "",
+    image: "/assets/projects/spylt-banner.jpg",
+    tags: [
+      {
+        id: 1,
+        name: "React 19",
+        path: "/assets/logos/react.svg",
+      },
+      {
+        id: 2,
+        name: "Tailwind CSS v4",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+      {
+        id: 3,
+        name: "GSAP",
+        path: "/assets/logos/javascript.svg",
+      },
+    ],
+  },
+  {
+    id: 2,
     title: "Payment Receiving System (PRS)",
     description:
       "A secure web system for recording and visualizing payments with REST API integration and real-time form validation.",
@@ -37,14 +70,14 @@ export const myProjects = [
         path: "/assets/logos/axios.svg",
       },
       {
-        id: 4,
+        id: 5,
         name: "Zustand",
         path: "/assets/logos/zustand.svg",
       },
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Weather App",
     description:
       "Displays real-time weather updates with a responsive and user-friendly interface.",
@@ -78,7 +111,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "EduHub",
     description:
       "Educational platform with responsive design and admin support for managing content.",
@@ -111,7 +144,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "CRUD App",
     description:
       "Implemented full CRUD operations with reusable components and optimized responsive layouts.",
