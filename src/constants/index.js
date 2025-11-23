@@ -28,7 +28,7 @@ export const myProjects = [
       {
         id: 3,
         name: "GSAP",
-        path: "/assets/logos/javascript.svg",
+        path: "/assets/logos/gsap.svg",
       },
     ],
   },
