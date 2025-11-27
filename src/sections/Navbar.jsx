@@ -61,24 +61,29 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <motion.div 
-      className="fixed inset-x-0 z-20 w-full"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+    <>
       <ProfileModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         profileImage="assets/sandyy.webp"
       />
-      <div className="mx-auto c-space max-w-7xl">
+      <motion.div 
+        className="fixed inset-x-0 z-20 w-full"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <div className="mx-auto c-space max-w-7xl">
         <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4 border-b border-white/5 backdrop-blur-2xl bg-gradient-to-b from-neutral-950/90 to-neutral-950/50 rounded-b-xl shadow-lg">
           <div className="flex items-center gap-3 md:gap-4">
             {/* Profile Picture */}
             <motion.button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                console.log('Profile button clicked');
+                setIsModalOpen(true);
+              }}
               className="relative w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-500 p-0.5 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 cursor-pointer border-0"
+              style={{ touchAction: 'manipulation', pointerEvents: 'auto', zIndex: 30 }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -93,8 +98,12 @@ const Navbar = () => {
 
             {/* Name */}
             <motion.button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                console.log('Name button clicked');
+                setIsModalOpen(true);
+              }}
               className="text-lg md:text-xl font-bold bg-gradient-to-r from-white via-neutral-100 to-neutral-300 bg-clip-text text-transparent hover:from-cyan-300 hover:via-blue-300 hover:to-purple-300 transition-all duration-300 cursor-pointer border-0 p-0 background-transparent"
+              style={{ touchAction: 'manipulation', pointerEvents: 'auto', zIndex: 30 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -130,7 +139,8 @@ const Navbar = () => {
           </nav>
         </motion.div>
       )}
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

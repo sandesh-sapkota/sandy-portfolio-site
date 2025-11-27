@@ -20,7 +20,7 @@ const Hero = () => {
       >
         <Canvas 
           dpr={isMobile ? 1 : [1, 2]}
-          style={{ touchAction: 'pan-y' }}
+          style={{ touchAction: 'pan-y', pointerEvents: isMobile ? 'none' : 'auto' }}
           camera={{ position: [0, 1, 3] }}
           gl={{
             powerPreference: "high-performance",
