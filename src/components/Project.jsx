@@ -13,6 +13,7 @@ const Project = ({
   tags,
   setPreview,
   isInternal,
+  category,
 }) => {
   const [isHidden, setIsHidden] = useState(false);
   const hasLiveDemo = Boolean(href) && !isInternal;
@@ -27,6 +28,11 @@ const Project = ({
         whileHover={{ y: -2 }}
       >
         <div className="flex-1 min-w-0">
+          {category && (
+            <span className="inline-flex mb-2 text-[11px] md:text-xs font-semibold tracking-wide uppercase text-cyan-300/90 border border-cyan-400/25 bg-cyan-500/10 px-2.5 py-1 rounded-md">
+              {category}
+            </span>
+          )}
           <p className="text-xl md:text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 group-hover:bg-clip-text transition-all duration-300">
             {title}
           </p>
@@ -105,6 +111,7 @@ const Project = ({
             href={href}
             githubLink={githubLink}
             isInternal={isInternal}
+            category={category}
             closeModal={() => setIsHidden(false)}
           />
         )}

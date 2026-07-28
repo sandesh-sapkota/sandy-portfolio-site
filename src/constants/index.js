@@ -1,7 +1,52 @@
 export const myProjects = [
   {
     id: 1,
+    title: "QR Menu & Table Ordering System",
+    category: "Full-Stack SaaS / Restaurant Tech",
+    description:
+      "A full-stack QR-based digital ordering platform enabling restaurant customers to scan table codes, browse interactive menus, manage cart state, and place real-time table orders.",
+    subDescription: [
+      "Built a QR-driven table ordering flow where guests scan codes to open interactive digital menus.",
+      "Managed cart state and order workflows with Zustand / React state for a responsive guest experience.",
+      "Integrated REST APIs for menu data, table sessions, and real-time order placement.",
+      "Shipped a production-ready UI with Next.js, TypeScript, and Tailwind CSS optimized for mobile dining scenarios.",
+    ],
+    href: "https://qr-ordering-five.vercel.app/",
+    githubLink: "https://github.com/sandesh-sapkota/qr-ordering",
+    logo: "",
+    image: "/assets/projects/qr-ordering.png",
+    tags: [
+      {
+        id: 1,
+        name: "Next.js",
+        path: "/assets/logos/nextjs.svg",
+      },
+      {
+        id: 2,
+        name: "TypeScript",
+        path: "/assets/logos/typescript.svg",
+      },
+      {
+        id: 3,
+        name: "Tailwind CSS",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+      {
+        id: 4,
+        name: "Zustand",
+        path: "/assets/logos/zustand.svg",
+      },
+      {
+        id: 5,
+        name: "REST APIs",
+        path: "/assets/logos/axios.svg",
+      },
+    ],
+  },
+  {
+    id: 2,
     title: "Payment Receiving System (PRS)",
+    category: "Full-Stack / FinTech",
     description:
       "A secure payment recording and visualization platform with RESTful API integration, schema validation, and persistent client state.",
     subDescription: [
@@ -44,8 +89,9 @@ export const myProjects = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Spylt - Immersive Landing Page",
+    category: "Frontend / Motion",
     description:
       "A high-performance marketing experience engineered around GSAP animation architecture and scroll-driven UI mechanics.",
     subDescription: [
@@ -77,7 +123,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Weather App",
     description:
       "Displays real-time weather updates with a responsive and user-friendly interface.",
@@ -110,7 +156,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "CRUD App",
     description:
       "Implemented full CRUD operations with reusable components and optimized responsive layouts.",
@@ -143,7 +189,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "EduHub",
     description:
       "Educational platform with responsive design and admin support for managing content.",
@@ -176,6 +222,7 @@ export const myProjects = [
     ],
   },
 ];
+
 
 export const mySocials = [
   {

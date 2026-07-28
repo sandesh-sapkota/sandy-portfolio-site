@@ -11,6 +11,7 @@ const ProjectDetails = ({
   href,
   githubLink,
   isInternal,
+  category,
   closeModal,
 }) => {
   useEffect(() => {
@@ -59,6 +60,11 @@ const ProjectDetails = ({
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <div>
+            {category && (
+              <span className="inline-flex mb-2 text-[11px] sm:text-xs font-semibold tracking-wide uppercase text-cyan-300/90 border border-cyan-400/25 bg-cyan-500/10 px-2.5 py-1 rounded-md">
+                {category}
+              </span>
+            )}
             <h5 className="mb-1 sm:mb-2 text-lg sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">{title}</h5>
             <p className="text-xs sm:text-sm md:text-base text-neutral-400 leading-relaxed">{description}</p>
           </div>
