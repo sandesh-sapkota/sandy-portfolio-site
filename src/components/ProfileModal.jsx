@@ -2,6 +2,34 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const interests = [
+  {
+    label: "Markets & Trading",
+    detail: "Financial markets, charts, and systematic decision-making",
+  },
+  {
+    label: "FinTech Systems",
+    detail: "Payments, order flows, and real-time product experiences",
+  },
+  {
+    label: "Music",
+    detail: "Singing and playing instruments",
+  },
+  {
+    label: "Travel & Learning",
+    detail: "Exploring places, ideas, and new technical domains",
+  },
+];
+
+const skills = [
+  "TypeScript",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "React",
+  "Zustand",
+];
+
 const ProfileModal = ({ isOpen, onClose, profileImage }) => {
   const dialogRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -16,12 +44,11 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
       document.body.style.overflow = "hidden";
     } else {
       setIsAnimating(false);
-      setTimeout(() => {
-        if (dialog.open) {
-          dialog.close();
-        }
-      }, 300);
+      const timeout = setTimeout(() => {
+        if (dialog.open) dialog.close();
+      }, 280);
       document.body.style.overflow = "unset";
+      return () => clearTimeout(timeout);
     }
 
     return () => {
@@ -29,49 +56,51 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
     };
   }, [isOpen]);
 
-  const handleBackdropClick = (e) => {
-    const dialog = dialogRef.current;
-    const rect = dialog.getBoundingClientRect();
-    if (
-      e.clientX < rect.left ||
-      e.clientX > rect.right ||
-      e.clientY < rect.top ||
-      e.clientY > rect.bottom
-    ) {
-      onClose();
-    }
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen, onClose]);
 
   return (
     <dialog
       ref={dialogRef}
-      onClick={handleBackdropClick}
-      className="p-0 m-0 bg-transparent backdrop:bg-black/60 backdrop:backdrop-blur-sm border-0 max-w-full max-h-full w-full h-full overflow-hidden"
-      style={{
-        zIndex: 10000,
-        position: 'fixed',
-        inset: 0,
+      className="fixed inset-0 z-[10000] m-0 h-[100dvh] max-h-[100dvh] w-full max-w-full overflow-hidden border-0 bg-transparent p-0 backdrop:bg-slate-950/75 backdrop:backdrop-blur-md"
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
       }}
     >
-      <div className="flex items-center justify-center w-full min-h-full px-4 py-8 md:py-16">
-        <div 
-          className={`w-full max-w-md bg-gradient-to-br from-slate-900 to-slate-950 rounded-3xl border border-neutral-700 shadow-2xl overflow-hidden max-h-[90vh] relative transition-all duration-300 ${
-            isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+      <div
+        className="flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain px-4 py-6 sm:py-8"
+        onClick={onClose}
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
+        <div
+          className={`relative my-auto flex w-full max-w-lg max-h-[min(88dvh,720px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-2xl shadow-black/50 transition-all duration-300 ${
+            isAnimating ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"
           }`}
           onClick={(e) => e.stopPropagation()}
-          style={{
-            transform: isAnimating ? 'scale(1)' : 'scale(0.9)',
-            opacity: isAnimating ? 1 : 0,
-          }}
         >
-          {/* Close Button */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 z-0 h-32"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(34, 211, 238, 0.12) 0%, transparent 70%)",
+            }}
+          />
+
           <button
-            className="absolute top-6 right-6 z-20 w-8 h-8 rounded-full bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center transition-colors"
+            className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-slate-950/80 text-neutral-300 transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white"
             onClick={onClose}
             type="button"
+            aria-label="Close profile"
           >
             <svg
-              className="w-5 h-5 text-white"
+              className="h-4 w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -85,73 +114,84 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
             </svg>
           </button>
 
-          {/* Content */}
-          <div className="p-6 md:p-8 text-center">
-            {/* Profile Picture */}
-            <div className="mb-6 flex justify-center">
-              <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 p-1 shadow-lg shadow-purple-500/30">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-900 to-slate-950 overflow-hidden border border-neutral-600">
+          {/* Scrollable body */}
+          <div
+            className="relative z-10 overflow-y-auto overscroll-contain p-5 sm:p-6 md:p-7"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            <div className="mb-5 flex flex-col items-center text-center">
+              <div className="mb-3 rounded-full bg-gradient-to-br from-cyan-400/80 via-sky-500/70 to-blue-600/80 p-[2px] shadow-lg shadow-cyan-500/20">
+                <div className="h-20 w-20 overflow-hidden rounded-full border border-white/10 bg-slate-950 sm:h-24 sm:w-24">
                   <img
                     src={profileImage}
                     alt="Sandesh Sapkota"
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </div>
-            </div>
 
-            {/* Name */}
-            <h2 className="text-xl md:text-2xl font-black bg-gradient-to-r from-white to-neutral-300 bg-clip-text text-transparent mb-1">
-              Sandesh Sapkota
-            </h2>
-            <p className="text-xs md:text-sm text-neutral-400 mb-4">
-              Full-Stack Software Engineer
-            </p>
-
-            {/* About Me Section */}
-            <div className="mb-4 text-left">
-              <h3 className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 uppercase tracking-wider">
-                About Me
-              </h3>
-              <p className="text-xs md:text-sm text-neutral-300 leading-relaxed">
-                Hi, I&apos;m Sandesh Sapkota (Sandy) from Kathmandu, Nepal. A
-                Full-Stack Engineer with a Computer Science foundation — I build
-                scalable end-to-end apps with TypeScript, Next.js, Node.js, and
-                relational databases.
+              <h2 className="text-lg font-bold tracking-tight text-white sm:text-xl">
+                Sandesh Sapkota
+              </h2>
+              <p className="mt-1 text-sm font-medium text-cyan-300/90">
+                Full-Stack Software Engineer
+              </p>
+              <p className="mt-1.5 text-xs text-neutral-500">
+                Kathmandu, Nepal · Open to remote
               </p>
             </div>
 
-            {/* Interests Section */}
-            <div className="mb-4 text-left">
-              <h3 className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-red-400 mb-2 uppercase tracking-wider">
-                Interests
+            <section className="mb-4 rounded-xl border border-white/10 bg-white/[0.03] p-3.5 text-left sm:p-4">
+              <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-400/90">
+                About
               </h3>
-              <ul className="text-xs md:text-sm text-neutral-300 leading-relaxed space-y-0.5 list-none">
-                <li>🎵 Music — singing and playing instruments</li>
-                <li>✈️ Travelling — exploring new places</li>
-                <li>
-                  📚 Learning & Research — discovering new ideas and
-                  knowledge
-                </li>
-              </ul>
-            </div>
+              <p className="text-sm leading-relaxed text-neutral-300">
+                Full-Stack Engineer with a Computer Science foundation. I design
+                and ship end-to-end systems with TypeScript, Next.js, Node.js,
+                and relational databases — with strong interest in SaaS,
+                payments, and financial technology.
+              </p>
+            </section>
 
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mb-4">
-              {["TypeScript", "Next.js", "Node.js", "PostgreSQL", "React"].map(
-                (skill) => (
+            <section className="mb-4 text-left">
+              <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-400">
+                Interests & Focus
+              </h3>
+              <ul className="space-y-2">
+                {interests.map((item) => (
+                  <li
+                    key={item.label}
+                    className="flex gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3 py-2.5"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">
+                        {item.label}
+                      </p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-neutral-400">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="pb-1 text-left">
+              <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-400">
+                Core Stack
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg text-cyan-300"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-neutral-200"
                   >
                     {skill}
                   </span>
-                )
-              )}
-            </div>
-
-            {/* Divider */}
-            <div className="h-px bg-gradient-to-r from-transparent via-neutral-600 to-transparent" />
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ const Navbar = () => {
       <ProfileModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        profileImage="assets/sandyy.webp"
+        profileImage="assets/cuteSandy.jpeg"
       />
       <motion.div 
         className="fixed inset-x-0 z-20 w-full"
@@ -82,14 +82,14 @@ const Navbar = () => {
                 console.log('Profile button clicked');
                 setIsModalOpen(true);
               }}
-              className="relative w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-500 p-0.5 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 cursor-pointer border-0"
+              className="relative w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-500 p-0.5 hover:shadow-lg hover:shadow-cyan-400/40 transition-all duration-300 cursor-pointer border-0"
               style={{ touchAction: 'manipulation', pointerEvents: 'auto', zIndex: 30 }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <div className="w-full h-full rounded-full bg-neutral-950 flex items-center justify-center overflow-hidden border border-white/10">
                 <img
-                  src="assets/sandyy.webp"
+                  src="assets/cuteSandy.jpeg"
                   alt="Sandesh Profile"
                   className="w-full h-full object-cover"
                 />
