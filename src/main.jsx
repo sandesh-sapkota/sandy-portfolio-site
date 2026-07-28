@@ -7,10 +7,12 @@ import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import Navbar from './sections/Navbar'
 import Footer from './sections/Footer'
+import CursorGlow from './components/CursorGlow'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <CursorGlow />
       <Navbar />
       <Routes>
         <Route path="/" element={<App />} />

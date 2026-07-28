@@ -105,19 +105,19 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
               Sandesh Sapkota
             </h2>
             <p className="text-xs md:text-sm text-neutral-400 mb-4">
-              AI-Powered Frontend Engineer
+              Full-Stack Software Engineer
             </p>
 
             {/* About Me Section */}
             <div className="mb-4 text-left">
-              <h3 className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2 uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 uppercase tracking-wider">
                 About Me
               </h3>
               <p className="text-xs md:text-sm text-neutral-300 leading-relaxed">
-                Hi, I&apos;m Sandesh Sapkota (Sandy) from Kathmandu, Nepal.
-                Frontend Developer & AI-Powered Solutions Engineer. I build
-                modern, scalable web apps using React, Node.js, cloud
-                technologies, and AI.
+                Hi, I&apos;m Sandesh Sapkota (Sandy) from Kathmandu, Nepal. A
+                Full-Stack Engineer with a Computer Science foundation — I build
+                scalable end-to-end apps with TypeScript, Next.js, Node.js, and
+                relational databases.
               </p>
             </div>
 
@@ -138,14 +138,16 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
 
             {/* Skills */}
             <div className="flex flex-wrap justify-center gap-2 mb-4">
-              {["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP"].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-blue-300"
-                >
-                  {skill}
-                </span>
-              ))}
+              {["TypeScript", "Next.js", "Node.js", "PostgreSQL", "React"].map(
+                (skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg text-cyan-300"
+                  >
+                    {skill}
+                  </span>
+                )
+              )}
             </div>
 
             {/* Divider */}

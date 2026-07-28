@@ -5,27 +5,12 @@ const variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.1, delayChildren: 0.15 },
     },
   },
 
   fadeUp: {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } },
-  },
-
-  keyword: {
-    hidden: { opacity: 0, scale: 0.85, y: 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: "backOut" },
-    },
-  },
-
-  button: {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
@@ -33,37 +18,35 @@ const variants = {
     },
   },
 
-  pulse: {
-    scale: [1, 1.2, 1],
-    opacity: [1, 0.6, 1],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut",
+  button: {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, ease: "easeOut" },
     },
   },
 };
 
 export default function HeroText() {
   return (
-    <div className="z-10 mt-16 md:mt-32 text-center md:text-left px-6 md:px-0 max-w-4xl">
-      <motion.div 
-        className="flex flex-col space-y-5 c-space"
+    <div className="relative z-10 mt-16 md:mt-32 text-center md:text-left max-w-4xl">
+      <motion.div
+        className="flex flex-col space-y-5"
         variants={variants.container}
         initial="hidden"
         animate="visible"
       >
-
         {/* Top Badge */}
         <motion.div
           variants={variants.fadeUp}
-          className="inline-flex items-center gap-2 w-fit mx-auto md:mx-0"
+          className="inline-flex items-center gap-2 w-fit mx-auto md:mx-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-sm"
         >
           <motion.div
-            className="relative w-2.5 h-2.5"
+            className="relative w-2 h-2"
             animate={{
-              scale: [1, 1.3, 1],
-              opacity: [1, 0.5, 1],
+              scale: [1, 1.25, 1],
+              opacity: [1, 0.55, 1],
             }}
             transition={{
               duration: 2,
@@ -71,70 +54,96 @@ export default function HeroText() {
               ease: "easeInOut",
             }}
           >
-            <div className="absolute inset-0 bg-cyan-400 rounded-full blur-md opacity-75"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full shadow-lg shadow-cyan-400/50"></div>
+            <div className="absolute inset-0 bg-cyan-400 rounded-full blur-md opacity-75" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full" />
           </motion.div>
-          <span className="text-xs mt-2 md:text-sm font-semibold text-neutral-300 tracking-widest uppercase">
+          <span className="text-xs md:text-sm font-semibold text-neutral-300 tracking-widest uppercase">
             Welcome to my portfolio
           </span>
         </motion.div>
 
         {/* Title */}
         <motion.div variants={variants.fadeUp}>
-          <motion.h1
-            className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight drop-shadow-lg"
-            animate={{ opacity: [0.95, 1, 0.95] }}
-            transition={{ duration: 5, repeat: Infinity }}
-          >
-            Hi, I&apos;m <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">Sandesh</span>
-          </motion.h1>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight">
+            Hi, I&apos;m{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
+              Sandesh
+            </span>
+          </h1>
 
-          <motion.p
-            className="text-lg md:text-2xl lg:text-3xl font-semibold text-neutral-200 drop-shadow-lg mt-3 leading-relaxed"
-            animate={{ opacity: [0.9, 1, 0.9] }}
-            transition={{ duration: 5, repeat: Infinity }}
-          >
-            AI-Powered Frontend Engineer | Crafting Intelligent, Scalable Web Experiences
-          </motion.p>
+          <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white mt-4 tracking-tight">
+            Full-Stack Software Engineer
+          </p>
+
+          <p className="text-sm md:text-base lg:text-lg font-medium text-neutral-400 mt-3 leading-relaxed max-w-2xl">
+            Designing and building scalable full-stack applications, robust
+            APIs, and modern web systems from database to UI.
+          </p>
         </motion.div>
 
-        {/* Keywords Grid */}
-        {/* Moved to separate Features section below hero */}
-
-        {/* CTA */}
-        <motion.div 
-          className="flex flex-col sm:flex-row gap-3 pt-2"
+        {/* CTAs */}
+        <motion.div
+          className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2 justify-center md:justify-start"
           variants={variants.container}
         >
           <motion.a
             href="#work"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              document
+                .getElementById("work")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold text-sm md:text-base shadow-lg hover:shadow-2xl transition-all hover:scale-105 active:scale-95"
+            className="px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm md:text-base shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-shadow"
             variants={variants.button}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
           >
-            View My Work
+            View Work
           </motion.a>
 
           <motion.a
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="px-8 py-3 rounded-full border-2 border-white text-white font-bold text-sm md:text-base hover:bg-white hover:text-black transition-all shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95"
+            className="px-7 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm md:text-base backdrop-blur-sm hover:bg-white/10 hover:border-white/25 transition-colors"
             variants={variants.button}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
           >
             Get In Touch
           </motion.a>
-        </motion.div>
 
+          <motion.a
+            href="/assets/Mongo_cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-7 py-3 rounded-xl border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 font-semibold text-sm md:text-base hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-200 transition-colors inline-flex items-center justify-center gap-2"
+            variants={variants.button}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            Resume / CV
+          </motion.a>
+        </motion.div>
       </motion.div>
     </div>
   );

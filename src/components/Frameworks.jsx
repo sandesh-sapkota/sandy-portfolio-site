@@ -1,32 +1,31 @@
 import { OrbitingCircles } from "./OrbitingCircles";
 
+/* eslint-disable react/prop-types */
 export function Frameworks() {
   const skills = [
-    "auth0",
-    "github",
-    "typescript",
-    "css3",
     "nodejs",
+    "expressjs",
     "nextjs",
-    "git",
-    "html5",
-    "javascript",
-    "microsoft",
+    "typescript",
     "react",
     "tailwindcss",
-    "vitejs",
-    "wordpress",
+    "zustand",
+    "git",
+    "github",
+    "javascript",
+    "mongodb",
+    "axios",
   ];
   return (
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
       <OrbitingCircles iconSize={40}>
         {skills.map((skill, index) => (
-          <Icon key={index} src={`assets/logos/${skill}.svg`} />
+          <Icon key={`outer-${skill}-${index}`} src={`assets/logos/${skill}.svg`} />
         ))}
       </OrbitingCircles>
       <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
-        {skills.reverse().map((skill, index) => (
-          <Icon key={index} src={`assets/logos/${skill}.svg`} />
+        {[...skills].reverse().map((skill, index) => (
+          <Icon key={`inner-${skill}-${index}`} src={`assets/logos/${skill}.svg`} />
         ))}
       </OrbitingCircles>
     </div>

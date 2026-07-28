@@ -42,37 +42,37 @@ const features = [
   {
     text: "Secure",
     icon: "🔒",
-    description: "Enterprise-grade security",
+    description: "Validated data flows and production-minded security",
     color: "from-blue-400 to-cyan-400",
   },
   {
-    text: "Modern",
-    icon: "✨",
-    description: "Latest technologies",
-    color: "from-purple-400 to-pink-400",
+    text: "Full-Stack",
+    icon: "🧩",
+    description: "From database and APIs to polished client UI",
+    color: "from-cyan-400 to-sky-400",
   },
   {
     text: "Scalable",
     icon: "📈",
-    description: "Built to grow",
-    color: "from-pink-400 to-red-400",
+    description: "Architected to grow with real product demand",
+    color: "from-sky-400 to-blue-500",
   },
   {
-    text: "AI-Driven",
-    icon: "🧠",
-    description: "Intelligent automation",
-    color: "from-green-400 to-emerald-400",
+    text: "API-First",
+    icon: "🔌",
+    description: "Clean REST contracts and reliable integrations",
+    color: "from-emerald-400 to-teal-400",
   },
   {
-    text: "Performance-Focused",
+    text: "Performance",
     icon: "⚡",
-    description: "Optimized for speed, efficiency, and smooth interactions",
-    color: "from-yellow-400 to-orange-400",
+    description: "Optimized for speed, efficiency, and smooth UX",
+    color: "from-amber-400 to-orange-400",
   },
   {
-    text: "Maintainable Code",
+    text: "Maintainable",
     icon: "🛠️",
-    description: "Clean architecture and best practices for long-term growth",
+    description: "Typed, modular code built for long-term growth",
     color: "from-indigo-400 to-blue-400",
   },
 ];
@@ -111,13 +111,14 @@ export default function Features() {
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
-            Cutting-Edge Development with AI
+            Built End to End
           </h2>
           <p className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto">
-            Six core principles that guide every project
+            Six strengths that shape every system I ship
           </p>
           <p className="text-base md:text-lg text-neutral-400 max-w-3xl mx-auto mt-6 leading-relaxed">
-            Crafting intelligent, secure, and scalable web solutions. Expert in React, Node.js, cloud architecture, and AI integration.
+            Designing and building scalable full-stack applications with
+            TypeScript, Next.js, Node.js, and modern data layers.
           </p>
         </motion.div>
 
@@ -140,9 +141,9 @@ export default function Features() {
 
               {/* Card Container */}
               <motion.div
-                className={`relative bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl border border-neutral-700 group-hover:border-neutral-500 p-8 transition-all duration-300 backdrop-blur-sm h-full flex flex-col`}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="relative bg-slate-950/80 rounded-2xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 backdrop-blur-sm h-full flex flex-col shadow-lg shadow-black/20"
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 {/* Icon */}
                 <motion.div

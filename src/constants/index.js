@@ -1,14 +1,58 @@
 export const myProjects = [
   {
     id: 1,
+    title: "Payment Receiving System (PRS)",
+    description:
+      "A secure payment recording and visualization platform with RESTful API integration, schema validation, and persistent client state.",
+    subDescription: [
+      "Integrated RESTful API services, schema validation using Zod, and global state persistence with Zustand.",
+      "Built a secure web system for recording and visualizing payments with real-time form validation.",
+      "Implemented React Hook Form + Zod pipelines to enforce data integrity across payment workflows.",
+      "Designed a responsive UI with Next.js, TypeScript, and Tailwind CSS for production readiness.",
+    ],
+    href: "",
+    githubLink: "",
+    logo: "",
+    image: "/assets/projects/prs.jpg",
+    isInternal: true,
+    tags: [
+      {
+        id: 1,
+        name: "Next.js",
+        path: "/assets/logos/nextjs.svg",
+      },
+      {
+        id: 2,
+        name: "TypeScript",
+        path: "/assets/logos/typescript.svg",
+      },
+      {
+        id: 3,
+        name: "Tailwind CSS",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+      {
+        id: 4,
+        name: "Axios",
+        path: "/assets/logos/axios.svg",
+      },
+      {
+        id: 5,
+        name: "Zustand",
+        path: "/assets/logos/zustand.svg",
+      },
+    ],
+  },
+  {
+    id: 2,
     title: "Spylt - Immersive Landing Page",
     description:
-      "A modern, high-performance landing page focusing on immersive user experience through advanced animations.",
+      "A high-performance marketing experience engineered around GSAP animation architecture and scroll-driven UI mechanics.",
     subDescription: [
-      "Built with React 19 and Tailwind CSS v4 for a robust and modern foundation.",
-      "Utilized GSAP for complex scroll-driven animations and parallax effects.",
-      "Features interactive UI with custom cursors and seamless video integration.",
-      "Fully responsive design optimized for all devices.",
+      "Architected complex scroll-driven animations and parallax sequences with GSAP timelines.",
+      "Built with React 19 and Tailwind CSS v4 for a performant, modern client foundation.",
+      "Engineered interactive UI mechanics including custom cursors and seamless video integration.",
+      "Fully responsive layout optimized for fluid motion across devices.",
     ],
     href: "https://spylt-site.vercel.app/",
     githubLink: "https://github.com/sandesh-sapkota/spylt-site",
@@ -33,50 +77,6 @@ export const myProjects = [
     ],
   },
   {
-    id: 2,
-    title: "Payment Receiving System (PRS)",
-    description:
-      "A secure web system for recording and visualizing payments with REST API integration and real-time form validation.",
-    subDescription: [
-      "Built a secure web system for recording and visualizing payments with REST API integration.",
-      "Implemented real-time form validation using React Hook Form and Zod for data integrity.",
-      "Integrated REST APIs with Axios for seamless backend communication.",
-      "Designed responsive UI with Tailwind CSS and managed state efficiently using Zustand.",
-    ],
-    href: "",
-    githubLink: "",
-    logo: "",
-    image: "/assets/projects/prs.jpg",
-    isInternal: true,
-    tags: [
-      {
-        id: 1,
-        name: "Next.js",
-        path: "/assets/logos/nextjs.svg",
-      },
-      {
-        id: 2,
-        name: "React",
-        path: "/assets/logos/react.svg",
-      },
-      {
-        id: 3,
-        name: "Tailwind CSS",
-        path: "/assets/logos/tailwindcss.svg",
-      },
-      {
-        id: 4,
-        name: "Axios",
-        path: "/assets/logos/axios.svg",
-      },
-      {
-        id: 5,
-        name: "Zustand",
-        path: "/assets/logos/zustand.svg",
-      },
-    ],
-  },
-  {
     id: 3,
     title: "Weather App",
     description:
@@ -97,7 +97,6 @@ export const myProjects = [
         name: "React.js",
         path: "/assets/logos/react.svg",
       },
-     
       {
         id: 3,
         name: "Tailwind CSS",
@@ -112,39 +111,6 @@ export const myProjects = [
   },
   {
     id: 4,
-    title: "EduHub",
-    description:
-      "Educational platform with responsive design and admin support for managing content.",
-    subDescription: [
-      "Developed an educational platform using HTML and CSS for robust foundation.",
-      "Implemented responsive design ensuring optimal viewing across all devices.",
-      "Built admin panel for content management and user administration.",
-      "Created intuitive interface for students and educators to interact seamlessly.",
-    ],
-    href: "https://sandyeduhub.netlify.app/",
-    githubLink: "https://github.com/sandesh-sapkota/sandy-eduhub",
-    logo: "",
-    image: "/assets/projects/sandy-eduhub.jpg",
-    tags: [
-      {
-        id: 1,
-        name: "HTML5",
-        path: "/assets/logos/html5.svg",
-      },
-      {
-        id: 2,
-        name: "CSS3",
-        path: "/assets/logos/css3.svg",
-      },
-      {
-        id: 3,
-        name: "JavaScript",
-        path: "/assets/logos/javascript.svg",
-      },
-    ],
-  },
-  {
-    id: 5,
     title: "CRUD App",
     description:
       "Implemented full CRUD operations with reusable components and optimized responsive layouts.",
@@ -176,6 +142,39 @@ export const myProjects = [
       },
     ],
   },
+  {
+    id: 5,
+    title: "EduHub",
+    description:
+      "Educational platform with responsive design and admin support for managing content.",
+    subDescription: [
+      "Developed an educational platform using HTML and CSS for a solid foundation.",
+      "Implemented responsive design ensuring optimal viewing across all devices.",
+      "Built admin panel for content management and user administration.",
+      "Created an intuitive interface for students and educators to interact seamlessly.",
+    ],
+    href: "https://sandyeduhub.netlify.app/",
+    githubLink: "https://github.com/sandesh-sapkota/sandy-eduhub",
+    logo: "",
+    image: "/assets/projects/sandy-eduhub.jpg",
+    tags: [
+      {
+        id: 1,
+        name: "HTML5",
+        path: "/assets/logos/html5.svg",
+      },
+      {
+        id: 2,
+        name: "CSS3",
+        path: "/assets/logos/css3.svg",
+      },
+      {
+        id: 3,
+        name: "JavaScript",
+        path: "/assets/logos/javascript.svg",
+      },
+    ],
+  },
 ];
 
 export const mySocials = [
@@ -185,21 +184,20 @@ export const mySocials = [
     icon: "/assets/socials/whatsApp.svg",
   },
   {
-    name: "Linkedin",
+    name: "LinkedIn",
     href: "https://www.linkedin.com/in/sandesh-sapkota-dev",
     icon: "/assets/socials/linkedIn.svg",
   },
-    {
-   name: "Facebook",
-   href: "https://www.facebook.com/sandesh.sapkota.471533/",
-   icon: "/assets/socials/fb.svg",
- },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/sandesh.sapkota.471533/",
+    icon: "/assets/socials/fb.svg",
+  },
   {
     name: "Instagram",
     href: "https://www.instagram.com/sandy_sapkota/",
     icon: "/assets/socials/instagram.svg",
   },
-
 ];
 
 export const experiences = [
@@ -210,17 +208,27 @@ export const experiences = [
     contents: [
       "Developed responsive web apps using React.js, Tailwind CSS, and JavaScript.",
       "Integrated REST APIs and optimized browser performance to enhance user experience.",
-      "Utilized GitHub Copilot and ChatGPT API to streamline development workflows.",
+      "Utilized modern tooling and AI-assisted workflows to streamline development.",
     ],
   },
   {
     title: "Frontend Developer Intern",
     job: "Brahma Byte Lab, Kathmandu",
-    date: "Aug 2025 – Present",
+    date: "Aug 2025 – Nov 2025",
     contents: [
       "Built production-ready interfaces using Next.js, TypeScript, and Tailwind CSS, improving load times and responsiveness.",
       "Enhanced the Payment Receiving System (PRS) with API integrations (Axios) and validations using React Hook Form + Zod.",
       "Collaborated in Agile sprints, reviewed pull requests, and maintained clean version control with Git and GitHub.",
+    ],
+  },
+  {
+    title: "Freelance Fullstack AI Software Engineer",
+    job: "Remote",
+    date: "Jan 2026 – Present",
+    contents: [
+      "Building and shipping full-stack web applications for clients using TypeScript, Next.js, Node.js, and modern UI systems.",
+      "Owning features end-to-end — from API design and validation to responsive, production-ready interfaces.",
+      "Collaborating remotely with clear delivery timelines, version control discipline, and maintainable code practices.",
     ],
   },
 ];
@@ -228,7 +236,8 @@ export const experiences = [
 export const education = [
   {
     id: 1,
-    degree: "Bachelor of Science in Computer Science and Information Technology (BSc.CSIT)",
+    degree:
+      "Bachelor of Science in Computer Science and Information Technology (BSc.CSIT)",
     institution: "Patan Multiple Campus, Tribhuvan University",
     location: "Lalitpur, Nepal",
     year: "2023 – 2026 (Expected)",
@@ -236,8 +245,8 @@ export const education = [
     highlights: [
       "Specializing in web development and software engineering",
       "Focus on modern technologies and full-stack development",
-      "Maintaining strong academic performance"
-    ]
+      "Maintaining strong academic performance",
+    ],
   },
   {
     id: 2,
@@ -249,58 +258,30 @@ export const education = [
     highlights: [
       "Foundation in computer science and mathematics",
       "Strong fundamentals in programming and algorithms",
-      "Competitive academic achievements"
-    ]
-  }
+      "Competitive academic achievements",
+    ],
+  },
 ];
 
-export const reviews = [
+export const focusAreas = [
   {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://robohash.org/jack",
+    title: "End-to-End Ownership",
+    description:
+      "Ship features across the stack — from schema design and APIs to polished, responsive interfaces.",
   },
   {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://robohash.org/jill",
+    title: "Reliable Systems",
+    description:
+      "Prioritize validation, type safety, and clean architecture so software stays maintainable under growth.",
   },
   {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://robohash.org/john",
+    title: "Performance & UX",
+    description:
+      "Balance snappy interactions with thoughtful motion, accessibility, and real-world device constraints.",
   },
   {
-    name: "Alice",
-    username: "@alice",
-    body: "This is hands down the best thing I've experienced. Highly recommend!",
-    img: "https://robohash.org/alice",
-  },
-  {
-    name: "Bob",
-    username: "@bob",
-    body: "Incredible work! The attention to detail is phenomenal.",
-    img: "https://robohash.org/bob",
-  },
-  {
-    name: "Charlie",
-    username: "@charlie",
-    body: "This exceeded all my expectations. Absolutely stunning!",
-    img: "https://robohash.org/charlie",
-  },
-  {
-    name: "Dave",
-    username: "@dave",
-    body: "Simply breathtaking. The best decision I've made in a while.",
-    img: "https://robohash.org/dave",
-  },
-  {
-    name: "Eve",
-    username: "@eve",
-    body: "So glad I found this. It has changed the game for me.",
-    img: "https://robohash.org/eve",
+    title: "Domain Depth",
+    description:
+      "Especially drawn to SaaS platforms, financial technology, and real-time data systems.",
   },
 ];

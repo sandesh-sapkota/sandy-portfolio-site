@@ -33,7 +33,7 @@ const ProjectDetails = ({
       onClick={closeModal}
     >
       <motion.div
-        className="relative w-full max-w-3xl border shadow-2xl rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-black border-white/10 max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-2rem)] flex flex-col"
+        className="relative w-full max-w-3xl border shadow-2xl rounded-2xl bg-slate-950 border-white/10 max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-2rem)] flex flex-col"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
@@ -86,25 +86,33 @@ const ProjectDetails = ({
               ))}
             </div>
             <div className="flex flex-row items-center gap-2 sm:gap-3 w-full sm:w-auto">
-              {!isInternal && (
-                <a 
+              {!isInternal && href && (
+                <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 font-semibold hover:border-cyan-300 transition-all text-xs sm:text-sm flex-1 sm:flex-initial"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 font-semibold hover:border-cyan-300 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)] transition-all text-xs sm:text-sm flex-1 sm:flex-initial"
                 >
-                  View 
-                  <img src="assets/arrow-up.svg" className="w-3 h-3 sm:w-4 sm:h-4" />
+                  Live Demo
+                  <img
+                    src="assets/arrow-up.svg"
+                    className="w-3 h-3 sm:w-4 sm:h-4"
+                    alt=""
+                  />
                 </a>
               )}
               {githubLink && (
-                <a 
+                <a
                   href={githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg bg-gradient-to-r from-gray-500/20 to-gray-600/20 border border-gray-400/50 text-gray-300 font-semibold hover:border-gray-300 transition-all text-xs sm:text-sm flex-1 sm:flex-initial"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-xl bg-white/5 border border-white/15 text-neutral-200 font-semibold hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_18px_rgba(255,255,255,0.08)] transition-all text-xs sm:text-sm flex-1 sm:flex-initial"
                 >
-                  <img src="assets/logos/github.svg" className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <img
+                    src="assets/logos/github.svg"
+                    className="w-3 h-3 sm:w-4 sm:h-4"
+                    alt=""
+                  />
                   GitHub
                 </a>
               )}
