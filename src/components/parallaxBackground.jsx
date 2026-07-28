@@ -1,5 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useMemo } from "react";
+import { useMediaQuery } from "react-responsive";
 
 /**
  * Premium 3D hero atmosphere — perspective floor, volumetric light,
@@ -7,6 +8,7 @@ import { useMemo } from "react";
  * the laptop remains the primary 3D subject.
  */
 const ParallaxBackground = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { damping: 42, stiffness: 85 });
 
@@ -17,7 +19,7 @@ const ParallaxBackground = () => {
 
   const dust = useMemo(
     () =>
-      Array.from({ length: 18 }, (_, i) => ({
+      Array.from({ length: isMobile ? 6 : 18 }, (_, i) => ({
         id: i,
         left: `${6 + ((i * 17) % 88)}%`,
         top: `${10 + ((i * 23) % 70)}%`,
@@ -26,7 +28,7 @@ const ParallaxBackground = () => {
         duration: 5.5 + (i % 5) * 1.2,
         opacity: 0.15 + (i % 4) * 0.08,
       })),
-    []
+    [isMobile]
   );
 
   return (

@@ -3,8 +3,10 @@ import { motion } from "motion/react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
+import { useMediaQuery } from "react-responsive";
 
 const Contact = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,13 +61,13 @@ const Contact = () => {
 
   return (
     <section className="relative flex items-center c-space section-spacing" id="contact">
-      <Particles
-        className="absolute inset-0 -z-50"
-        quantity={50} // Reduced from 100 for better mobile performance
-        ease={80}
-        color={"#ffffff"}
-        refresh
-      />
+          <Particles
+            className="absolute inset-0 -z-50"
+            quantity={isMobile ? 12 : 40}
+            ease={80}
+            color={"#ffffff"}
+            refresh
+          />
       {showAlert && <Alert type={alertType} text={alertMessage} />}
       <div className="flex flex-col items-center justify-center max-w-md p-8 mx-auto border border-white/10 rounded-2xl bg-gradient-to-br from-neutral-900/80 via-neutral-850/80 to-black/80 shadow-2xl backdrop-blur-xl hover:border-cyan-400/30 transition-all duration-300">
         <div className="flex flex-col items-start w-full gap-4 mb-8">

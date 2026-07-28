@@ -167,7 +167,7 @@ body {
 
 /* About Section */
 .grid-1 {
-  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-2 md:col-span-3 h-auto min-h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
 }
 .grid-2 {
   @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
@@ -243,14 +243,6 @@ body {
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
-  /* Optimize scrolling performance */
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  
   /* Reduce animation complexity on mobile */
   .motion-optimized {
     animation-duration: 0.2s !important;
@@ -258,35 +250,25 @@ body {
 
   /* Simplify particle animations on mobile */
   .particles-container {
-    opacity: 0.3;
-    will-change: auto; /* Disable will-change on mobile to save memory */
+    opacity: 0.25;
+    will-change: auto;
   }
-  
-  /* Disable expensive transforms on mobile */
-  * {
-    will-change: auto !important;
-  }
-  
+
   /* Reduce backdrop blur on mobile */
   .backdrop-blur-lg {
     backdrop-filter: blur(4px);
   }
-  
+
   /* Optimize Canvas rendering */
   canvas {
     image-rendering: auto;
     touch-action: pan-y;
   }
-  
+
   /* Prevent scroll blocking */
-  body, html {
+  body,
+  html {
     overscroll-behavior-y: contain;
-    scroll-behavior: auto; /* Disable smooth scroll on mobile for better performance */
-  }
-  
-  /* Optimize fixed elements */
-  .fixed {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    scroll-behavior: auto;
   }
 }

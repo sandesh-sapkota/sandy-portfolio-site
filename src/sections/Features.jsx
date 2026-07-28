@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { useInView } from "react-intersection-observer";
 import { useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const variants = {
   container: {
@@ -83,6 +84,7 @@ export default function Features() {
     threshold: 0.1,
   });
 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -103,7 +105,7 @@ export default function Features() {
         variants={variants.container}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        style={{ opacity, y: yOffset }}
+        style={isMobile ? undefined : { opacity, y: yOffset }}
       >
         {/* Section Header */}
         <motion.div
