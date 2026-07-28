@@ -30,7 +30,7 @@ const variants = {
 
 export default function HeroText() {
   return (
-    <div className="relative z-10 mt-16 md:mt-32 text-center md:text-left max-w-4xl">
+    <div className="relative z-10 mt-4 md:mt-24 text-center md:text-left max-w-4xl mx-auto md:mx-0">
       <motion.div
         className="flex flex-col space-y-5"
         variants={variants.container}
@@ -64,18 +64,18 @@ export default function HeroText() {
 
         {/* Title */}
         <motion.div variants={variants.fadeUp}>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight">
             Hi, I&apos;m{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
               Sandesh
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white mt-4 tracking-tight">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mt-3 md:mt-4 tracking-tight">
             Full-Stack Software Engineer
           </p>
 
-          <p className="text-sm md:text-base lg:text-lg font-medium text-neutral-400 mt-3 leading-relaxed max-w-2xl">
+          <p className="text-sm md:text-base lg:text-lg font-medium text-neutral-400 mt-2 md:mt-3 leading-relaxed max-w-2xl mx-auto md:mx-0">
             Designing and building scalable full-stack applications, robust
             APIs, and modern web systems from database to UI.
           </p>
@@ -94,7 +94,7 @@ export default function HeroText() {
                 .getElementById("work")
                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm md:text-base shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-shadow"
+            className="px-7 py-2.5 md:py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm md:text-base shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-shadow"
             variants={variants.button}
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
@@ -110,7 +110,7 @@ export default function HeroText() {
                 .getElementById("contact")
                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="px-7 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm md:text-base backdrop-blur-sm hover:bg-white/10 hover:border-white/25 transition-colors"
+            className="px-7 py-2.5 md:py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm md:text-base backdrop-blur-sm hover:bg-white/10 hover:border-white/25 transition-colors"
             variants={variants.button}
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
@@ -122,7 +122,7 @@ export default function HeroText() {
             href="/assets/Mongo_cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-3 rounded-xl border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 font-semibold text-sm md:text-base hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-200 transition-colors inline-flex items-center justify-center gap-2"
+            className="px-7 py-2.5 md:py-3 rounded-xl border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 font-semibold text-sm md:text-base hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-200 transition-colors inline-flex items-center justify-center gap-2"
             variants={variants.button}
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
