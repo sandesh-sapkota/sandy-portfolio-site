@@ -36,7 +36,7 @@ const Hero = () => {
       </div>
 
       {/* 3D stage — stacked under text on mobile; full overlay on md+ */}
-      <figure className="relative z-[1] mx-auto h-[46vh] min-h-[280px] w-full md:absolute md:inset-0 md:h-screen md:min-h-0">
+      <figure className="relative z-[2] mx-auto h-[46vh] min-h-[280px] w-full md:absolute md:inset-0 md:h-screen md:min-h-0">
         <Canvas
           dpr={isMobile ? 1 : [1, 1.75]}
           style={{
@@ -55,6 +55,9 @@ const Hero = () => {
             stencil: false,
             depth: true,
             alpha: true,
+          }}
+          onCreated={({ gl }) => {
+            gl.setClearColor(0x000000, 0);
           }}
         >
           <ambientLight intensity={0.4} />

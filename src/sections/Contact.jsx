@@ -69,23 +69,23 @@ const Contact = () => {
             refresh
           />
       {showAlert && <Alert type={alertType} text={alertMessage} />}
-      <div className="flex flex-col items-center justify-center max-w-md p-8 mx-auto border border-white/10 rounded-2xl bg-gradient-to-br from-neutral-900/80 via-neutral-850/80 to-black/80 shadow-2xl backdrop-blur-xl hover:border-cyan-400/30 transition-all duration-300">
+      <div className="flex flex-col items-center justify-center max-w-md p-8 mx-auto border border-black/10 dark:border-white/10 rounded-2xl bg-white/90 dark:bg-gradient-to-br dark:from-neutral-900/80 dark:via-neutral-850/80 dark:to-black/80 shadow-2xl backdrop-blur-xl hover:border-cyan-500/40 dark:hover:border-cyan-400/30 transition-all duration-300">
         <div className="flex flex-col items-start w-full gap-4 mb-8">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Let&apos;s Connect</h2>
-          <p className="font-normal text-neutral-400 leading-relaxed text-sm">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">Let&apos;s Connect</h2>
+          <p className="font-normal text-slate-600 dark:text-neutral-400 leading-relaxed text-sm">
             Ready to collaborate? Drop me a message and let&apos;s create something amazing together.
           </p>
         </div>
         <form className="w-full space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name" className="field-label text-sm font-semibold text-neutral-300 block mb-2">
+            <label htmlFor="name" className="field-label text-sm font-semibold text-slate-700 dark:text-neutral-300 block mb-2">
               Full Name
             </label>
             <input
               id="name"
               name="name"
               type="text"
-              className="field-input field-input-focus w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:border-cyan-400/50 focus:outline-none transition-all"
+              className="field-input field-input-focus w-full px-4 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-neutral-500 focus:border-cyan-400/50 focus:outline-none transition-all"
               placeholder="Sandy Sapkota"
               autoComplete="name"
               value={formData.name}
@@ -95,14 +95,14 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="field-label text-sm font-semibold text-neutral-300 block mb-2">
+            <label htmlFor="email" className="field-label text-sm font-semibold text-slate-700 dark:text-neutral-300 block mb-2">
               Email
             </label>
             <input
               id="email"
               name="email"
               type="email"
-              className="field-input field-input-focus w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:border-cyan-400/50 focus:outline-none transition-all"
+              className="field-input field-input-focus w-full px-4 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-neutral-500 focus:border-cyan-400/50 focus:outline-none transition-all"
               placeholder="Sandy@email.com"
               autoComplete="email"
               value={formData.email}
@@ -112,14 +112,14 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label htmlFor="message" className="field-label text-sm font-semibold text-neutral-300 block mb-2">
+            <label htmlFor="message" className="field-label text-sm font-semibold text-slate-700 dark:text-neutral-300 block mb-2">
               Message
             </label>
             <textarea
               id="message"
               name="message"
               rows="4"
-              className="field-input field-input-focus w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-neutral-500 focus:border-cyan-400/50 focus:outline-none transition-all resize-none"
+              className="field-input field-input-focus w-full px-4 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-neutral-500 focus:border-cyan-400/50 focus:outline-none transition-all resize-none"
               placeholder="Share your thoughts..."
               value={formData.message}
               onChange={handleChange}

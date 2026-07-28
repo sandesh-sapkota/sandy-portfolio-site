@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import "tailwindcss";
+
+/* Class-based dark mode for next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: #030412;
   --color-midnight: #06091f;
@@ -37,7 +41,6 @@
       transform: translateX(calc(-100% - var(--gap)));
     }
   }
-
   @keyframes marquee-vertical {
     from {
       transform: translateY(0);
@@ -47,15 +50,34 @@
     }
   }
 }
+
+:root {
+  --page-bg: #e8f0f8;
+  --page-fg: #0f172a;
+}
+
+.dark {
+  --page-bg: #020617;
+  --page-fg: #ffffff;
+}
+
 html,
 body {
-  background: #020617;
+  background: var(--page-bg);
+  color: var(--page-fg);
   min-height: 100%;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
   font-family: "Funnel Display", sans-serif;
-  color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -79,46 +101,43 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0e1a;
+  background: #e2e8f0;
   border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0a0e1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #22d3ee, #5c33cc, #ca2f8c, #22d3ee);
+  background: linear-gradient(90deg, #22d3ee, #0284c7, #22d3ee);
   background-size: 200% 200%;
   border-radius: 10px;
   animation: scrollbarShine 3s ease infinite;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #22d3ee, #5c33cc, #ca2f8c, #22d3ee);
+  background-size: 200% 200%;
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90deg, #06b6d4, #7c3aed, #ea4884, #06b6d4);
-  background-size: 200% 200%;
-  animation: scrollbarShine 1.5s ease infinite;
-  box-shadow: 0 0 30px rgba(34, 211, 238, 0.8), inset 0 0 10px rgba(34, 211, 238, 0.4);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(90deg, #0891b2, #6d28d9, #c2185b, #0891b2);
-  box-shadow: 0 0 40px rgba(34, 211, 238, 1), inset 0 0 15px rgba(34, 211, 238, 0.6);
-}
-
-/* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
+  scrollbar-color: #0284c7 #e2e8f0;
+}
+
+.dark * {
   scrollbar-color: #22d3ee #0a0e1a;
 }
 
 html {
-  scrollbar-color: #22d3ee #0a0e1a;
   scroll-behavior: smooth;
-  /* Mobile touch scrolling optimizations */
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
 }
 
 body {
-  /* Prevent scroll lag on mobile */
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -137,15 +156,15 @@ body {
 }
 
 .text-heading {
-  @apply font-bold text-3xl md:text-4xl;
+  @apply font-bold text-3xl md:text-4xl text-slate-900 dark:text-white;
 }
 
 .headtext {
-  @apply mt-2 mb-2 text-xl;
+  @apply mt-2 mb-2 text-xl text-slate-900 dark:text-white;
 }
 
 .subtext {
-  @apply text-neutral-400 text-sm md:text-base text-pretty;
+  @apply text-slate-600 dark:text-neutral-400 text-sm md:text-base text-pretty;
 }
 
 /* Navigation */
@@ -154,12 +173,13 @@ body {
 }
 
 .nav-li {
-  @apply text-neutral-400 hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+  @apply text-slate-500 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
 }
 
 .nav-link {
-  @apply text-lg md:text-base hover:text-white transition-colors;
+  @apply text-lg md:text-base hover:text-slate-900 dark:hover:text-white transition-colors;
 }
+
 /* Button Components */
 .btn {
   @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden;
@@ -183,14 +203,15 @@ body {
 }
 
 .grid-default-color {
-  @apply p-6 bg-gradient-to-b from-slate-900 to-slate-950 rounded-2xl;
+  @apply p-6 bg-gradient-to-b from-white to-slate-100 dark:from-slate-900 dark:to-slate-950 rounded-2xl;
 }
 
 .grid-special-color {
-  @apply p-6 bg-gradient-to-b from-royal to-lavender rounded-2xl;
+  @apply p-6 bg-gradient-to-b from-sky-600 to-cyan-700 dark:from-royal dark:to-lavender rounded-2xl;
 }
+
 .grid-black-color {
-  @apply p-6 bg-gradient-to-tl from-slate-800 via-slate-950 to-slate-900 rounded-2xl;
+  @apply p-6 bg-gradient-to-tl from-slate-200 via-slate-100 to-slate-200 dark:from-slate-800 dark:via-slate-950 dark:to-slate-900 rounded-2xl;
 }
 
 /* Contact Section*/
@@ -199,11 +220,11 @@ body {
 }
 
 .field-input {
-  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-white/10 transition duration-200 placeholder-neutral-500 border border-white/10 mt-2;
+  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-slate-900/5 dark:bg-white/10 transition duration-200 placeholder-neutral-500 border border-black/10 dark:border-white/10 mt-2 text-slate-900 dark:text-white;
 }
 
 .field-input-focus {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/30 dark:focus-visible:ring-white/20;
 }
 
 /* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
@@ -212,14 +233,12 @@ body {
   transform: translateZ(0);
 }
 
-/* Smooth motion on mobile */
 @media (prefers-reduced-motion: no-preference) {
   .motion-optimized {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
-/* Disable animations for users with reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -230,7 +249,6 @@ body {
   }
 }
 
-/* Optimize scrolling performance */
 body {
   scroll-behavior: auto;
 }
@@ -241,31 +259,25 @@ body {
   }
 }
 
-/* Mobile-specific optimizations */
 @media (max-width: 768px) {
-  /* Reduce animation complexity on mobile */
   .motion-optimized {
     animation-duration: 0.2s !important;
   }
 
-  /* Simplify particle animations on mobile */
   .particles-container {
     opacity: 0.25;
     will-change: auto;
   }
 
-  /* Reduce backdrop blur on mobile */
   .backdrop-blur-lg {
     backdrop-filter: blur(4px);
   }
 
-  /* Optimize Canvas rendering */
   canvas {
     image-rendering: auto;
     touch-action: pan-y;
   }
 
-  /* Prevent scroll blocking */
   body,
   html {
     overscroll-behavior-y: contain;

@@ -22,25 +22,25 @@ const Project = ({
   return (
     <>
       <motion.div
-        className="flex-wrap items-center justify-between py-8 px-6 space-y-6 sm:flex sm:space-y-0 rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur-sm hover:border-white/20 hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 group"
+        className="flex-wrap items-center justify-between py-8 px-6 space-y-6 sm:flex sm:space-y-0 rounded-2xl border border-black/10 bg-white/80 dark:border-white/10 dark:bg-slate-950/60 backdrop-blur-sm hover:border-black/20 dark:hover:border-white/20 hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 group"
         onMouseEnter={() => setPreview(image)}
         onMouseLeave={() => setPreview(null)}
         whileHover={{ y: -2 }}
       >
         <div className="flex-1 min-w-0">
           {category && (
-            <span className="inline-flex mb-2 text-[11px] md:text-xs font-semibold tracking-wide uppercase text-cyan-300/90 border border-cyan-400/25 bg-cyan-500/10 px-2.5 py-1 rounded-md">
+            <span className="inline-flex mb-2 text-[11px] md:text-xs font-semibold tracking-wide uppercase text-cyan-700 dark:text-cyan-300/90 border border-cyan-600/25 dark:border-cyan-400/25 bg-cyan-500/10 px-2.5 py-1 rounded-md">
               {category}
             </span>
           )}
-          <p className="text-xl md:text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 group-hover:bg-clip-text transition-all duration-300">
+          <p className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-500 group-hover:to-blue-600 dark:group-hover:from-cyan-400 dark:group-hover:to-blue-400 group-hover:bg-clip-text transition-all duration-300">
             {title}
           </p>
           <div className="flex gap-3 mt-3 flex-wrap">
             {tags.map((tag) => (
               <span
                 key={tag.id}
-                className="text-xs md:text-sm px-3 py-1 rounded-lg bg-white/5 text-cyan-300 border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-400/10 transition-colors"
+                className="text-xs md:text-sm px-3 py-1 rounded-lg bg-slate-100 text-cyan-700 border border-black/10 hover:border-cyan-500/40 hover:bg-cyan-500/10 dark:bg-white/5 dark:text-cyan-300 dark:border-white/10 dark:hover:border-cyan-400/40 dark:hover:bg-cyan-400/10 transition-colors"
               >
                 {tag.name}
               </span>

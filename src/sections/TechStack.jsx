@@ -73,7 +73,7 @@ const TechStack = () => {
                 delay: 0.1 + index * 0.08,
                 ease: "easeOut",
               }}
-              className={`group relative rounded-2xl border border-white/10 bg-slate-950/80 p-6 md:p-7 backdrop-blur-sm shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 ${stack.glow} hover:shadow-xl`}
+              className={`group relative rounded-2xl border border-black/10 bg-white/80 dark:border-white/10 dark:bg-slate-950/80 p-6 md:p-7 backdrop-blur-sm shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-black/20 dark:hover:border-white/20 ${stack.glow} hover:shadow-xl`}
             >
               <div
                 className={`mb-5 h-1 w-12 rounded-full bg-gradient-to-r ${stack.accent}`}
@@ -87,7 +87,7 @@ const TechStack = () => {
                 {stack.skills.map((skill) => (
                   <li
                     key={skill}
-                    className="flex items-start gap-2.5 text-sm md:text-base text-neutral-300"
+                    className="flex items-start gap-2.5 text-sm md:text-base text-slate-700 dark:text-neutral-300"
                   >
                     <span
                       className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r ${stack.accent}`}

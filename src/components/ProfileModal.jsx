@@ -80,7 +80,7 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         <div
-          className={`relative my-auto flex w-full max-w-lg max-h-[min(88dvh,720px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-2xl shadow-black/50 transition-all duration-300 ${
+          className={`relative my-auto flex w-full max-w-lg max-h-[min(88dvh,720px)] flex-col overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-slate-950 shadow-2xl shadow-black/20 dark:shadow-black/50 transition-all duration-300 ${
             isAnimating ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -130,22 +130,22 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
                 </div>
               </div>
 
-              <h2 className="text-lg font-bold tracking-tight text-white sm:text-xl">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white sm:text-xl">
                 Sandesh Sapkota
               </h2>
-              <p className="mt-1 text-sm font-medium text-cyan-300/90">
+              <p className="mt-1 text-sm font-medium text-cyan-700 dark:text-cyan-300/90">
                 Full-Stack Software Engineer
               </p>
-              <p className="mt-1.5 text-xs text-neutral-500">
+              <p className="mt-1.5 text-xs text-slate-500 dark:text-neutral-500">
                 Kathmandu, Nepal · Open to remote
               </p>
             </div>
 
-            <section className="mb-4 rounded-xl border border-white/10 bg-white/[0.03] p-3.5 text-left sm:p-4">
-              <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-400/90">
+            <section className="mb-4 rounded-xl border border-black/10 dark:border-white/10 bg-slate-50 dark:bg-white/[0.03] p-3.5 text-left sm:p-4">
+              <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-700 dark:text-cyan-400/90">
                 About
               </h3>
-              <p className="text-sm leading-relaxed text-neutral-300">
+              <p className="text-sm leading-relaxed text-slate-700 dark:text-neutral-300">
                 Full-Stack Engineer with a Computer Science foundation. I design
                 and ship end-to-end systems with TypeScript, Next.js, Node.js,
                 and relational databases — with strong interest in SaaS,
@@ -154,21 +154,21 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
             </section>
 
             <section className="mb-4 text-left">
-              <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-400">
+              <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-neutral-400">
                 Interests & Focus
               </h3>
               <ul className="space-y-2">
                 {interests.map((item) => (
                   <li
                     key={item.label}
-                    className="flex gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3 py-2.5"
+                    className="flex gap-3 rounded-xl border border-black/5 dark:border-white/5 bg-slate-50 dark:bg-white/[0.02] px-3 py-2.5"
                   >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
                     <div>
-                      <p className="text-sm font-semibold text-white">
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white">
                         {item.label}
                       </p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-neutral-400">
+                      <p className="mt-0.5 text-xs leading-relaxed text-slate-500 dark:text-neutral-400">
                         {item.detail}
                       </p>
                     </div>
@@ -178,14 +178,14 @@ const ProfileModal = ({ isOpen, onClose, profileImage }) => {
             </section>
 
             <section className="pb-1 text-left">
-              <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-400">
+              <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-neutral-400">
                 Core Stack
               </h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-neutral-200"
+                    className="rounded-lg border border-black/10 dark:border-white/10 bg-slate-100 dark:bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-neutral-200"
                   >
                     {skill}
                   </span>

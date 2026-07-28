@@ -40,7 +40,7 @@ export default function HeroText() {
         {/* Top Badge */}
         <motion.div
           variants={variants.fadeUp}
-          className="inline-flex items-center gap-2 w-fit mx-auto md:mx-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 w-fit mx-auto md:mx-0 rounded-full border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5 px-3 py-1.5 backdrop-blur-sm"
         >
           <motion.div
             className="relative w-2 h-2"
@@ -57,25 +57,25 @@ export default function HeroText() {
             <div className="absolute inset-0 bg-cyan-400 rounded-full blur-md opacity-75" />
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full" />
           </motion.div>
-          <span className="text-xs md:text-sm font-semibold text-neutral-300 tracking-widest uppercase">
+          <span className="text-xs md:text-sm font-semibold text-slate-600 dark:text-neutral-300 tracking-widest uppercase">
             Welcome to my portfolio
           </span>
         </motion.div>
 
         {/* Title */}
         <motion.div variants={variants.fadeUp}>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white leading-[1.05] tracking-tight">
             Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 dark:from-cyan-400 dark:via-sky-400 dark:to-blue-500 bg-clip-text text-transparent">
               Sandesh
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mt-3 md:mt-4 tracking-tight">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mt-3 md:mt-4 tracking-tight">
             Full-Stack Software Engineer
           </p>
 
-          <p className="text-sm md:text-base lg:text-lg font-medium text-neutral-400 mt-2 md:mt-3 leading-relaxed max-w-2xl mx-auto md:mx-0">
+          <p className="text-sm md:text-base lg:text-lg font-medium text-slate-600 dark:text-neutral-400 mt-2 md:mt-3 leading-relaxed max-w-2xl mx-auto md:mx-0">
             Designing and building scalable full-stack applications, robust
             APIs, and modern web systems from database to UI.
           </p>
@@ -110,7 +110,7 @@ export default function HeroText() {
                 .getElementById("contact")
                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="px-7 py-2.5 md:py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm md:text-base backdrop-blur-sm hover:bg-white/10 hover:border-white/25 transition-colors"
+            className="px-7 py-2.5 md:py-3 rounded-xl border border-slate-300 bg-white/70 text-slate-800 font-semibold text-sm md:text-base backdrop-blur-sm hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/25 transition-colors"
             variants={variants.button}
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
@@ -122,7 +122,7 @@ export default function HeroText() {
             href="/assets/Mongo_cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-2.5 md:py-3 rounded-xl border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 font-semibold text-sm md:text-base hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-200 transition-colors inline-flex items-center justify-center gap-2"
+            className="px-7 py-2.5 md:py-3 rounded-xl border border-cyan-600/30 bg-cyan-500/10 text-cyan-700 font-semibold text-sm md:text-base hover:bg-cyan-500/20 hover:border-cyan-500/50 dark:border-cyan-400/30 dark:text-cyan-300 dark:hover:border-cyan-400/50 dark:hover:text-cyan-200 transition-colors inline-flex items-center justify-center gap-2"
             variants={variants.button}
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}

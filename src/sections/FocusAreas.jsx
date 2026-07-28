@@ -33,17 +33,17 @@ export default function FocusAreas() {
                 delay: 0.08 + index * 0.06,
                 ease: "easeOut",
               }}
-              className="group rounded-2xl border border-white/10 bg-slate-950/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-lg hover:shadow-cyan-500/5"
+              className="group rounded-2xl border border-black/10 bg-white/80 dark:border-white/10 dark:bg-slate-950/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 dark:hover:border-cyan-400/30 hover:shadow-lg hover:shadow-cyan-500/5"
             >
               <div className="mb-3 flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-xs font-bold text-cyan-300">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-black/10 bg-slate-100 text-xs font-bold text-cyan-700 dark:border-white/10 dark:bg-white/5 dark:text-cyan-300">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-cyan-700 dark:group-hover:text-cyan-200 transition-colors">
                   {area.title}
                 </h3>
               </div>
-              <p className="text-sm md:text-base text-neutral-400 leading-relaxed">
+              <p className="text-sm md:text-base text-slate-600 dark:text-neutral-400 leading-relaxed">
                 {area.description}
               </p>
             </motion.div>

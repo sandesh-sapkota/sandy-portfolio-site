@@ -4,14 +4,14 @@ import { motion } from "motion/react";
 
 const Footer = () => {
   return (
-    <section className="flex flex-wrap items-center justify-between gap-5 pb-3 text-sm text-neutral-400 c-space">
-      <div className="mb-4 bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full" />
+    <section className="flex flex-wrap items-center justify-between gap-5 pb-3 text-sm text-slate-500 dark:text-neutral-400 c-space">
+      <div className="mb-4 bg-gradient-to-r from-transparent via-slate-300 dark:via-neutral-700 to-transparent h-[1px] w-full" />
       <div className="flex gap-2">
-        <Link to="/terms" className="hover:text-cyan-400 transition-colors">
+        <Link to="/terms" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
           Terms & Conditions
         </Link>
         <p>|</p>
-        <Link to="/privacy" className="hover:text-cyan-400 transition-colors">
+        <Link to="/privacy" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
           Privacy Policy
         </Link>
       </div>
@@ -40,7 +40,7 @@ const Footer = () => {
           >
             <img
               src={social.icon}
-              className="w-5 h-5 filter grayscale hover:grayscale-0 transition-all duration-300"
+              className="w-5 h-5 brightness-0 opacity-70 hover:opacity-100 dark:brightness-0 dark:invert dark:opacity-80 dark:hover:opacity-100 transition-all duration-300"
               alt={social.name}
             />
           </motion.a>

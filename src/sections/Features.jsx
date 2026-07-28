@@ -112,13 +112,13 @@ export default function Features() {
           variants={variants.item}
           className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white mb-4">
             Built End to End
           </h2>
-          <p className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-neutral-300 max-w-2xl mx-auto">
             Six strengths that shape every system I ship
           </p>
-          <p className="text-base md:text-lg text-neutral-400 max-w-3xl mx-auto mt-6 leading-relaxed">
+          <p className="text-base md:text-lg text-slate-500 dark:text-neutral-400 max-w-3xl mx-auto mt-6 leading-relaxed">
             Designing and building scalable full-stack applications with
             TypeScript, Next.js, Node.js, and modern data layers.
           </p>
@@ -143,7 +143,7 @@ export default function Features() {
 
               {/* Card Container */}
               <motion.div
-                className="relative bg-slate-950/80 rounded-2xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 backdrop-blur-sm h-full flex flex-col shadow-lg shadow-black/20"
+                className="relative bg-white/90 dark:bg-slate-950/80 rounded-2xl border border-black/10 dark:border-white/10 group-hover:border-black/20 dark:group-hover:border-white/20 p-8 transition-all duration-300 backdrop-blur-sm h-full flex flex-col shadow-lg shadow-black/5 dark:shadow-black/20"
                 whileHover={{ y: -6, scale: 1.01 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
@@ -167,7 +167,7 @@ export default function Features() {
 
                 {/* Description */}
                 <motion.p
-                  className="text-sm md:text-base text-neutral-400 group-hover:text-neutral-300 transition-colors flex-grow"
+                  className="text-sm md:text-base text-slate-600 dark:text-neutral-400 group-hover:text-slate-800 dark:group-hover:text-neutral-300 transition-colors flex-grow"
                   initial={{ opacity: 0.7 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.2 }}

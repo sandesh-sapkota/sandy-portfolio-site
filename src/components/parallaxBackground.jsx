@@ -3,201 +3,184 @@ import { useMemo } from "react";
 import { useMediaQuery } from "react-responsive";
 
 /**
- * Premium 3D hero atmosphere — perspective floor, volumetric light,
- * layered fog, and floating luminous orbs. CSS-only for performance;
- * the laptop remains the primary 3D subject.
+ * Premium 3D hero atmosphere.
+ * Uses CSS `.dark` for theme so light-mode grids/glows stay reliably visible.
  */
 const ParallaxBackground = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { damping: 42, stiffness: 85 });
 
-  const floorY = useTransform(progress, [0, 0.45], ["0%", "12%"]);
-  const midY = useTransform(progress, [0, 0.45], ["0%", "8%"]);
-  const farY = useTransform(progress, [0, 0.45], ["0%", "4%"]);
-  const orbX = useTransform(progress, [0, 0.45], ["0%", "-5%"]);
+  const floorY = useTransform(progress, [0, 0.45], ["0%", "10%"]);
+  const midY = useTransform(progress, [0, 0.45], ["0%", "6%"]);
+  const farY = useTransform(progress, [0, 0.45], ["0%", "3%"]);
+  const orbX = useTransform(progress, [0, 0.45], ["0%", "-4%"]);
 
   const dust = useMemo(
     () =>
-      Array.from({ length: isMobile ? 6 : 18 }, (_, i) => ({
+      Array.from({ length: isMobile ? 10 : 22 }, (_, i) => ({
         id: i,
-        left: `${6 + ((i * 17) % 88)}%`,
-        top: `${10 + ((i * 23) % 70)}%`,
-        size: 1 + (i % 3),
-        delay: (i % 7) * 0.55,
-        duration: 5.5 + (i % 5) * 1.2,
-        opacity: 0.15 + (i % 4) * 0.08,
+        left: `${5 + ((i * 19) % 90)}%`,
+        top: `${8 + ((i * 27) % 72)}%`,
+        size: 2 + (i % 3),
+        delay: (i % 7) * 0.4,
+        duration: 5 + (i % 5) * 1.1,
       })),
     [isMobile]
   );
 
   return (
     <div
-      className="absolute inset-0 -z-10 h-full w-full overflow-hidden pointer-events-none"
+      className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden"
       aria-hidden="true"
     >
-      {/* Deep void base */}
-      <div className="absolute inset-0 bg-[#020617]" />
+      {/* Base */}
+      <div className="absolute inset-0 bg-[#e8f0f8] transition-colors duration-300 dark:bg-[#020617]" />
 
-      {/* Atmospheric depth wash */}
+      {/* Color wash */}
       <motion.div
         className="absolute inset-0"
-        style={{
-          y: farY,
-          background: `
-            radial-gradient(ellipse 100% 80% at 50% -10%, rgba(56, 189, 248, 0.16) 0%, transparent 50%),
-            radial-gradient(ellipse 70% 55% at 78% 35%, rgba(14, 165, 233, 0.18) 0%, transparent 55%),
-            radial-gradient(ellipse 55% 45% at 12% 55%, rgba(30, 64, 175, 0.22) 0%, transparent 50%),
-            radial-gradient(ellipse 90% 60% at 50% 100%, rgba(2, 6, 23, 1) 0%, transparent 55%)
-          `,
-        }}
-      />
-
-      {/* Distant wall grid (subtle, behind subject) */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          y: midY,
-          backgroundImage: `
-            linear-gradient(to right, rgba(186, 230, 253, 0.7) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(186, 230, 253, 0.7) 1px, transparent 1px)
-          `,
-          backgroundSize: "72px 72px",
-          maskImage:
-            "radial-gradient(ellipse 70% 55% at 55% 35%, black 10%, transparent 70%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 55% at 55% 35%, black 10%, transparent 70%)",
-          transform: "perspective(1200px) rotateX(8deg) scale(1.15)",
-          transformOrigin: "center 40%",
-        }}
-      />
-
-      {/* 3D perspective floor grid */}
-      <motion.div
-        className="absolute inset-x-0 bottom-0 h-[58%] origin-bottom"
-        style={{
-          y: floorY,
-          perspective: "900px",
-          perspectiveOrigin: "50% 0%",
-        }}
-      >
-        <div
-          className="absolute inset-0 origin-bottom"
-          style={{
-            transform: "rotateX(62deg) translateY(8%) scale(1.35)",
-            backgroundImage: `
-              linear-gradient(to right, rgba(34, 211, 238, 0.22) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(34, 211, 238, 0.18) 1px, transparent 1px)
-            `,
-            backgroundSize: "56px 56px",
-            maskImage:
-              "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 45%, transparent 85%)",
-            WebkitMaskImage:
-              "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 45%, transparent 85%)",
-          }}
-        />
-        {/* Floor reflection glow */}
-        <div
-          className="absolute inset-x-[15%] bottom-[18%] h-[28%] rounded-[100%] blur-3xl"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(34, 211, 238, 0.18) 0%, transparent 70%)",
-          }}
-        />
-      </motion.div>
-
-      {/* Volumetric light shafts */}
-      <div
-        className="absolute -top-[20%] left-[42%] h-[120%] w-[38%] opacity-40 mix-blend-screen"
-        style={{
-          background:
-            "linear-gradient(105deg, transparent 0%, rgba(56, 189, 248, 0.07) 35%, rgba(125, 211, 252, 0.12) 48%, rgba(56, 189, 248, 0.06) 62%, transparent 100%)",
-          filter: "blur(18px)",
-          transform: "skewX(-12deg)",
-        }}
-      />
-      <div
-        className="absolute -top-[10%] right-[8%] h-[90%] w-[22%] opacity-30 mix-blend-screen"
-        style={{
-          background:
-            "linear-gradient(118deg, transparent 0%, rgba(14, 165, 233, 0.1) 40%, transparent 75%)",
-          filter: "blur(24px)",
-          transform: "skewX(-8deg)",
-        }}
-      />
-
-      {/* Premium luminous orbs (glass-like depth) */}
-      <motion.div
-        className="absolute right-[12%] top-[18%] h-[42vmin] w-[42vmin]"
         style={{ y: farY }}
       >
         <div
-          className="absolute inset-0 rounded-full blur-2xl"
+          className="absolute inset-0 opacity-100 dark:opacity-100"
           style={{
-            background:
-              "radial-gradient(circle at 35% 35%, rgba(165, 243, 252, 0.35) 0%, rgba(34, 211, 238, 0.15) 28%, rgba(14, 165, 233, 0.06) 50%, transparent 70%)",
+            background: `
+              radial-gradient(ellipse 90% 70% at 70% 35%, rgba(6, 182, 212, 0.35) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 60% at 20% 55%, rgba(37, 99, 235, 0.22) 0%, transparent 50%),
+              radial-gradient(ellipse 100% 50% at 50% -10%, rgba(14, 165, 233, 0.25) 0%, transparent 45%)
+            `,
           }}
         />
         <div
-          className="absolute inset-[18%] rounded-full border border-cyan-200/10"
+          className="absolute inset-0 hidden dark:block"
           style={{
-            background:
-              "radial-gradient(circle at 30% 28%, rgba(255,255,255,0.12) 0%, rgba(34,211,238,0.05) 40%, transparent 70%)",
-            boxShadow:
-              "inset 0 0 40px rgba(34, 211, 238, 0.12), 0 0 80px rgba(14, 165, 233, 0.15)",
+            background: `
+              radial-gradient(ellipse 100% 80% at 50% -10%, rgba(56, 189, 248, 0.16) 0%, transparent 50%),
+              radial-gradient(ellipse 70% 55% at 78% 35%, rgba(14, 165, 233, 0.18) 0%, transparent 55%),
+              radial-gradient(ellipse 55% 45% at 12% 55%, rgba(30, 64, 175, 0.22) 0%, transparent 50%)
+            `,
           }}
         />
       </motion.div>
 
+      {/* Wall grid — strong in light, soft in dark */}
       <motion.div
-        className="absolute left-[6%] top-[42%] h-[28vmin] w-[28vmin]"
-        style={{ x: orbX, y: midY }}
-      >
-        <div
-          className="absolute inset-0 rounded-full blur-2xl"
-          style={{
-            background:
-              "radial-gradient(circle at 40% 35%, rgba(147, 197, 253, 0.28) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-[22%] rounded-full border border-sky-200/10"
-          style={{
-            background:
-              "radial-gradient(circle at 32% 30%, rgba(255,255,255,0.1) 0%, transparent 65%)",
-            boxShadow: "inset 0 0 30px rgba(59, 130, 246, 0.1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Smaller accent orb */}
-      <motion.div
-        className="absolute right-[38%] top-[12%] h-[12vmin] w-[12vmin] rounded-full blur-xl"
+        className="absolute inset-0 dark:hidden"
         style={{
           y: midY,
-          background:
-            "radial-gradient(circle, rgba(186, 230, 253, 0.35) 0%, rgba(34, 211, 238, 0.08) 50%, transparent 75%)",
+          opacity: 0.35,
+          backgroundImage: `
+            linear-gradient(to right, rgba(14, 116, 144, 0.9) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(14, 116, 144, 0.9) 1px, transparent 1px)
+          `,
+          backgroundSize: "56px 56px",
+          maskImage:
+            "radial-gradient(ellipse 85% 70% at 55% 38%, black 15%, transparent 78%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 85% 70% at 55% 38%, black 15%, transparent 78%)",
+          transform: "perspective(1100px) rotateX(8deg) scale(1.15)",
+          transformOrigin: "center 30%",
         }}
-        animate={{ opacity: [0.45, 0.75, 0.45], scale: [1, 1.06, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          y: midY,
+          opacity: 0.06,
+          backgroundImage: `
+            linear-gradient(to right, rgba(186,230,253,0.85) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(186,230,253,0.85) 1px, transparent 1px)
+          `,
+          backgroundSize: "64px 64px",
+          maskImage:
+            "radial-gradient(ellipse 80% 65% at 50% 40%, black 20%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 65% at 50% 40%, black 20%, transparent 75%)",
+          transform: "perspective(1100px) rotateX(6deg) scale(1.12)",
+          transformOrigin: "center 35%",
+        }}
       />
 
-      {/* Floating dust motes */}
+      {/* Perspective floor grid */}
+      <motion.div
+        className="absolute inset-x-0 bottom-0 h-[72%] origin-bottom"
+        style={{
+          y: floorY,
+          perspective: "850px",
+          perspectiveOrigin: "50% 0%",
+        }}
+      >
+        {/* Light mode floor — intentionally bold */}
+        <div
+          className="absolute inset-0 origin-bottom dark:hidden"
+          style={{
+            transform: "rotateX(58deg) translateY(4%) scale(1.45)",
+            backgroundImage: `
+              linear-gradient(to right, rgba(8, 145, 178, 0.75) 2px, transparent 2px),
+              linear-gradient(to bottom, rgba(8, 145, 178, 0.6) 2px, transparent 2px)
+            `,
+            backgroundSize: "44px 44px",
+            maskImage:
+              "linear-gradient(to top, black 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 60%, transparent 90%)",
+            WebkitMaskImage:
+              "linear-gradient(to top, black 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 60%, transparent 90%)",
+          }}
+        />
+        {/* Dark mode floor */}
+        <div
+          className="absolute inset-0 origin-bottom hidden dark:block"
+          style={{
+            transform: "rotateX(58deg) translateY(6%) scale(1.4)",
+            backgroundImage: `
+              linear-gradient(to right, rgba(34, 211, 238, 0.25) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(34, 211, 238, 0.2) 1px, transparent 1px)
+            `,
+            backgroundSize: "48px 48px",
+            maskImage:
+              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 45%, transparent 85%)",
+            WebkitMaskImage:
+              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 45%, transparent 85%)",
+          }}
+        />
+        <div className="absolute inset-x-[8%] bottom-[14%] h-[30%] rounded-[100%] bg-cyan-500/40 blur-3xl dark:bg-cyan-400/20" />
+      </motion.div>
+
+      {/* Orbs */}
+      <motion.div
+        className="absolute right-[8%] top-[12%] h-[50vmin] w-[50vmin] rounded-full bg-cyan-400/40 blur-3xl dark:bg-cyan-400/20"
+        style={{ y: farY }}
+      />
+      <motion.div
+        className="absolute left-[4%] top-[38%] h-[34vmin] w-[34vmin] rounded-full bg-blue-500/25 blur-3xl dark:bg-blue-500/15"
+        style={{ x: orbX, y: midY }}
+      />
+      <motion.div
+        className="absolute right-[34%] top-[8%] h-[16vmin] w-[16vmin] rounded-full bg-sky-400/50 blur-2xl dark:bg-cyan-200/30"
+        style={{ y: midY }}
+        animate={{ opacity: [0.55, 0.95, 0.55], scale: [1, 1.1, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Light shafts */}
+      <div
+        className="absolute -top-[15%] left-[38%] h-[115%] w-[42%] skew-x-[-12deg] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent blur-2xl dark:via-cyan-300/10"
+      />
+
+      {/* Dust motes */}
       {dust.map((d) => (
         <motion.span
           key={d.id}
-          className="absolute rounded-full bg-cyan-100"
+          className="absolute rounded-full bg-teal-700 shadow-[0_0_8px_rgba(13,148,136,0.5)] dark:bg-cyan-100 dark:shadow-[0_0_6px_rgba(165,243,252,0.6)]"
           style={{
             left: d.left,
             top: d.top,
             width: d.size,
             height: d.size,
-            opacity: d.opacity,
-            boxShadow: "0 0 6px rgba(165, 243, 252, 0.6)",
           }}
           animate={{
-            y: [0, -18, 0],
-            opacity: [d.opacity * 0.4, d.opacity, d.opacity * 0.4],
+            y: [0, -16, 0],
+            opacity: [0.25, 0.7, 0.25],
           }}
           transition={{
             duration: d.duration,
@@ -208,34 +191,25 @@ const ParallaxBackground = () => {
         />
       ))}
 
-      {/* Horizon glow line */}
+      {/* Horizon */}
+      <div className="absolute inset-x-0 bottom-[34%] h-[2px] bg-gradient-to-r from-transparent via-cyan-600/70 to-transparent shadow-[0_0_20px_rgba(8,145,178,0.55)] dark:via-cyan-300/50 dark:shadow-[0_0_24px_rgba(34,211,238,0.35)]" />
+
+      {/* Mild bottom fade only */}
+      <div className="absolute inset-x-0 bottom-0 h-[22%] bg-gradient-to-t from-[#e8f0f8] to-transparent dark:from-[#020617]" />
+
+      {/* Light vignette only at corners */}
       <div
-        className="absolute inset-x-0 bottom-[38%] h-px"
+        className="absolute inset-0 dark:hidden"
         style={{
           background:
-            "linear-gradient(to right, transparent 5%, rgba(34, 211, 238, 0.35) 40%, rgba(125, 211, 252, 0.5) 50%, rgba(34, 211, 238, 0.35) 60%, transparent 95%)",
-          boxShadow: "0 0 24px rgba(34, 211, 238, 0.35)",
+            "radial-gradient(ellipse 95% 85% at 50% 40%, transparent 55%, rgba(203, 213, 225, 0.35) 100%)",
         }}
       />
-
-      {/* Ground fog */}
-      <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[#020617] via-[#020617]/85 to-transparent" />
-
-      {/* Cinematic vignette */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 hidden dark:block"
         style={{
           background:
-            "radial-gradient(ellipse 85% 75% at 50% 42%, transparent 25%, rgba(2, 6, 23, 0.45) 75%, rgba(2, 6, 23, 0.78) 100%)",
-        }}
-      />
-
-      {/* Soft film grain */}
-      <div
-        className="absolute inset-0 opacity-[0.035] mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundSize: "180px 180px",
+            "radial-gradient(ellipse 85% 75% at 50% 42%, transparent 30%, rgba(2, 6, 23, 0.5) 100%)",
         }}
       />
     </div>
